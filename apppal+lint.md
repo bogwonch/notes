@@ -1,102 +1,121 @@
-AppPAL Linting
-==============
+Properties of AppPAL policies
+=============================
 
-Given an AppPAL policy we can use it as a basis for inference. Other
-questions, however, include:
+Three interesting properties an AppPAL policy may have:
 
--   What decisions are *derivable* by a given speaker:
-    -   from the assertion context supplied?
-    -   by asking third parties who may provide additional facts when
-        prompted?
--   Given two assertions for deriving the same statement:
-    -   are they *equivalent*? (i.e. they check for the same facts)
-    -   is one *redundant*? (i.e. one checks for a subset of the facts
-        of the other)
--   Given a policy can we identify any rules which are:
+Completeness
+:   given a rule and a policy do we have enough statements in that policy to use the rule successfully?
 
-    -   *Tautological*? (i.e. they are always true or always false)
-    -   *Mutually exclusive*? (i.e. they can never **both** be true)
-    -   If we know two facts should be *mutually exclusive*:
-        -   Can we find examples of *contradiction*.
+Consistency
+:   if we have rules of the form `can` and `cannot` are there examples of things which both are true?
 
-Examples
---------
+Redundancy
+:   can we spot when two rules are the same, or when a rule checks something which is always checked as part of a conditional?
 
-### Simplification
 
-We ought to report that this:
+Completeness
+------------
 
-``` {.apppal}
-'a' says X p if X r, X r.
-```
+### Examples
 
-Simplifies to:
+~~~~
+'x' says A p
+  if A q,
+     A r.
 
-``` {.apppal}
-'a' says X p if X r.
-```
+'x' says 'y' r.
+~~~~
 
-Even though in practice the check of the second ='a' says X r= would be
-quick (by caching).
+Here the statement `'x' says 'y' r.` is complete (facts don't require any further information to be true); but `'x' says A p...` is not as we have no means to determine whether `'x' says A q.`
 
-Similarly something should be reported for policies of the form:
+~~~~
+'x' says 'y' can-say A p.
+~~~~
 
-``` {.apppal}
-'a' says X p if X q, X r.
-'a' says X q if X r.
-```
+In this example we don't know whether `'x' says A p.` is complete: we know we
+can delegate to `'y'` to help make the decision but as we don't have any
+statements from `'y'` we'd need to confirm with them.
 
-As the check for ='a' says X r= in the first rule is redundant by the
-rule for ='a' says X q=.
+~~~~
+'x' says 'y' can-say A p.
 
-### Decidability
+'y' says A p
+  if A q.
+~~~~
 
-Say we have just a rule (and no ground facts):
+This time we know that `'y' says A q.` is incomplete, and hence `'y' says A
+p...` is incomplete. Since `'x' says 'y'.` depends on an incomplete statement
+(from `'y'`) it must be incomplete too.
 
-``` {.apppal}
-'a' says X p.
-```
+### Checking
 
-We ought to report that it is not decidable.
+We want to check whether a predicate `p` is complete for a speaker `'x'` given
+an assertion context `AC`. To do this we define a set `ℂ𝕠𝕞𝕡𝕝𝕖𝕥𝕖` of speakers and
+predicate, where membership means that the speaker has rules to say that
+something satisfies the predicate which are themselves complete.
 
-Similarly the rules:
+#### Cond rule
 
-``` {.apppal}
-'a' says X p if X q.
-'a' says X q if X p.
-```
+A predicate is complete for a speaker if there exists a rule with zero or more
+conditionals, where each conditional predicate is also complete for the speaker.
+Hence all facts (rules without conditionals) are complete as they satisfy this
+rule trivially.
 
-Ought to be flagged as not decidable.
+    ∃('x' says ∗ p if ∗ p₁, ..., ∗ pₙ) ∈ AC s.t.
+    ∀i ∈ 1..n.  AC ⊢ ('x', pᵢ) ∈ ℂ𝕠𝕞𝕡𝕝𝕖𝕥𝕖
+    -------------------------------------------- (completeness-cond)
+    AC ⊢ ('x', p) ∈ ℂ𝕠𝕞𝕡𝕝𝕖𝕥𝕖
 
-### Redundancy
 
-Say we have two rules for inferring a fact:
+#### Can-Say rule
 
-``` {.apppal}
-'a' says X p 
-  if X q,
-     X r.
+For the can-say rule we need two statements: the `can-say` statement allowing
+the delegation, and the confirmation from the delegated party that the rules
+outcome is valid.
 
-'a' says X p
-  if X r.
-```
+When checking completeness we need to know the delegation is complete for the
+speaker, and that the delegated predicate is complete for the delegated speaker.
+Since `can-say` is superficially different from the standard predicates we
+transform it into a *Y`-can-say-`p* predicate using the same strategy as the
+cond completeness checks.
 
-The first rule is redundant, as the second will be true whether or not
-='a' says X p=.
 
-### Tautology
+    ∃('x' says 'y' can-say ∗ p if ∗ p₁, ..., ∗ pₙ) ∈ AC s.t.
+    ∀i ∈ 1..n.  AC ⊢ ('x', pᵢ) ∈ ℂ𝕠𝕞𝕡𝕝𝕖𝕥𝕖
+    -------------------------------------------------------- (completeness-can-say-delegation)
+    AC ⊢ ('x', 'y'-can-say-p) ∈ ℂ𝕠𝕞𝕡𝕝𝕖𝕥𝕖
 
-A fact (an assertion with no conditionals or constraints) is always
-true. A rule (an assertion with conditionals) is tautologically true if
-all its conditions are always true and its constraint is true.
+Finally the full test for completeness is that the delegation is complete for
+the speaker, and the delegated statement is complete for the delegated speaker.
 
-``` {.apppal}
-'a' says 'b' p.
-'a' says 'b' q if 'b' p.
-```
+    ∃'y' ∈ speakers(AC) s.t.
+    AC ⊢ ('x', 'y'-can-say-p) ∈ ℂ𝕠𝕞𝕡𝕝𝕖𝕥𝕖
+    AC ⊢ ('y', p) ∈ ℂ𝕠𝕞𝕡𝕝𝕖𝕥𝕖
+    ------------------------------------ (completeness-can-say)
+    AC ⊢ ('x', p) ∈ ℂ𝕠𝕞𝕡𝕝𝕖𝕥𝕖
 
-∀ c ∈ cond(r): c ∈ 𝔸 constraint(r) = ⊤
 
-------------------------------------------------------------------------
+Consistency
+-----------
 
-r ∈ 𝔸
+**TODO**
+
+
+Redundancy
+----------
+
+### Examples
+
+~~~~
+'x' says A p
+  if A q,
+     A r.
+
+'x' says A r
+  if A q,
+     A s.
+~~~~
+
+In the rule `'x' says A p...` the check that `'A q` is redundant as it is duplicated in the rule for `'x' says A r...`.
+
+

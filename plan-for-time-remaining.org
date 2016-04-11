@@ -1,0 +1,40 @@
+* Plan for Remaining Time
+
+** Dates
+- PhD funding runs out DEADLINE: <2017-06-30 Fri>
+- Third year report (first draft of Thesis?) DEADLINE: <2016-11-01> 
+
+** Publications
+
+- ESSoS-DS 2014
+  - SecPAL might be useful
+- ESSoS 2016
+  - AppPAL intro
+  - People don't seem to follow policies
+- iFM-DS 2016
+  - Start of BYOD stuff
+
+** Case Study
+
+- We have policies written up for:
+  - NHS
+  - SANS
+  - Some other junk ones
+- Open questions
+  - How do we know the AppPAL formalization is correct
+    - We don’t but it doesn¡Çt actually matter.
+      AppPAL acts as a tool for reasoning and modelling policies
+      It helps us spot when there may be mistakes and when we need to check our assumptions.
+  - Linting
+    - Consistency
+      - Do you have two AppPAL statements that say opposite things that are both true
+      - We have a plan for how to do it but needs schemas for AppPAL
+      - Plan actually needs testing and more thought
+      - …and actual implementation
+    - Completeness
+      - Do we have enough information to make a decision
+      - Sorta implemented :-D
+      - Needs testing and understanding when it gets decision wrong
+    - Redundancy
+      - How can you spot when a branch of choices will never be made, or when multiple statements are checked multiple times
+      - Suspect this is the hardest

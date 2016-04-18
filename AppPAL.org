@@ -1,0 +1,50 @@
+* AppPAL
+** Policies
+*** BYOD
+
+- Translating policies for
+  - SANS
+  - NHS Torbay
+
+**** TODO Which attributes described in SecPAL paper are needed to express BYOD policies?
+**** TODO David to chase /Mobile Iron/.
+
+*** Property checking
+
+- Stop calling it Lint.
+- Completeness is to be renamed /satisfiability/ or /derivability/.
+
+**** TODO Survey XACML methods for property checking
+
+** Knowledge Distribution
+
+*** Modelling protocols in Pi-Calculus
+
+What happens when you compose policies from different places which conflict?
+
+
+
+*** TODO what policies are there that really need to be distributed?
+
+*** What happens when time becomes a part of a policy?
+
+** Uncertain Knowledge
+   - Annotation on ~says~ part of SecPAL.
+   - Quantified with respect to belief in any given statement.
+   - How do you handle independence
+  
+*** TODO lit survey
+
+** Tasks
+*** TODO Find an expert to ask about policies
+    - /Naranka Dulay/ at Imperial?
+    - Michael Ravatsos at Edinburgh?
+*** TODO Read Papers added to Zotero
+    - [ ] XACML 3.0 in Answer Set Programming. /Carroline Dewi Puspa Kencana Ramli, Hanne Riis Nielson, and Flemming Nielson./
+    - [ ] The Logic of XACML. /Carroline Dewi Puspa Kencana Ramli, Hanne Riis Nielson, and Flemming Nielson./
+    - [ ] Access Control via Belnap Logic: Intuitive, Expressive, and Analyzable Policy Composition. /Glenn Bruns, Michael Huth./
+    - [ ] Access Control in an Open Distributed Environment. /R.J. Hayton, J.M. Bacon, K. Moody./
+    - [ ] Formalisation and Implementation of the XACML Access Control Mechanism. /Massimilano Masi, Roario Pugliese, Francesco Tiezzi./
+    - [ ] Synthesising Verified Access Control Systems in XACML. /Nan Zhang, Mark Ryan, Dimitar P. Guelev./
+** Other things
+   - David to switch my funding from /Intel/ to /App Guarden/ from /April/ to /June/ for expenses reasons.x

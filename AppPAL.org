@@ -39,12 +39,74 @@ What happens when you compose policies from different places which conflict?
 *** TODO Find an expert to ask about policies
     - /Naranka Dulay/ at Imperial?
     - Michael Ravatsos at Edinburgh?
-*** TODO Read Papers added to Zotero
-    - [ ] XACML 3.0 in Answer Set Programming. /Carroline Dewi Puspa Kencana Ramli, Hanne Riis Nielson, and Flemming Nielson./
-    - [ ] The Logic of XACML. /Carroline Dewi Puspa Kencana Ramli, Hanne Riis Nielson, and Flemming Nielson./
-    - [ ] Access Control via Belnap Logic: Intuitive, Expressive, and Analyzable Policy Composition. /Glenn Bruns, Michael Huth./
-    - [ ] Access Control in an Open Distributed Environment. /R.J. Hayton, J.M. Bacon, K. Moody./
-    - [ ] Formalisation and Implementation of the XACML Access Control Mechanism. /Massimilano Masi, Roario Pugliese, Francesco Tiezzi./
-    - [ ] Synthesising Verified Access Control Systems in XACML. /Nan Zhang, Mark Ryan, Dimitar P. Guelev./
+*** TODO [4/7] Read Papers added to Zotero
+- [ ] XACML 3.0 in Answer Set Programming. /Carroline Dewi Puspa Kencana Ramli, Hanne Riis Nielson, and Flemming Nielson./
+- [X] The Logic of XACML. /Carroline Dewi Puspa Kencana Ramli, Hanne Riis Nielson, and Flemming Nielson./
+
+Presents formalization of XACML, and derives a logic that represents it.
+Very readable given the dryness of the subject.
+    
+- [ ] Access Control via Belnap Logic: Intuitive, Expressive, and Analyzable Policy Composition. /Glenn Bruns, Michael Huth./
+- [X] Access Control in an Open Distributed Environment. /R.J. Hayton, J.M. Bacon, K. Moody./
+
+Seems to be an explanation of an early OASIS based system.
+Not sure what's meant to be interesting about it.
+
+- [ ] Formalisation and Implementation of the XACML Access Control Mechanism. /Massimilano Masi, Roario Pugliese, Francesco Tiezzi./
+- [X] Synthesising Verified Access Control Systems in XACML. /Nan Zhang, Mark Ryan, Dimitar P. Guelev./
+
+They take a toy system called RW and show how it can be implemented in XACML.
+Again, this seems like a pile of highly citable but not interesting poop.
+
+- [X] Detecting Incompleteness, Conflicting and Unreachability XACML Policies using Answer Set Programming. /Carroline Dewi Puspa Kencana Ramli./
+
+Really useful.   See work from <2016-04-20 Wed>.
+
+
+
+
+
 ** Other things
    - David to switch my funding from /Intel/ to /App Guarden/ from /April/ to /June/ for expenses reasons.x
+
+* PhD
+** <2016-04-19 Tue>
+** <2016-04-20 Wed>
+*** Read /Detecting Incompleteness, Conflicting and Unreachable XACML Policies/.
+
+Fascinating work.
+Seems to join together much of the other work by the Nielson papers on Answer Set programming in XACML.
+
+Gives definitions of many of the properties we're interested in for AppPAL using ASP, as well as the mechanisms for translating XACML into ASP.
+Seems to link to other interesting work.
+
+Can we define AppPAL verisions of their properties?
+**** AppPAL versions
+***** Conflict
+****** XACML
+Given two /rules/ in a /policy set/: *R* and *Rʹ*.
+
+*Conflict* ← ∃Q: ⟦R⟧(Q) = =permit= ∧ ⟦Rʹ⟧(Q) = =deny=.
+****** AppPAL
+
+*Conflict* ← ∃ a, x, p: AC ⊧ /a/ =says= /x/ =is= /p/. ∧ AC ⊧ /a/ =says= /x/ =isnot= /p/.
+
+We could probably even do this in AppPAL itself, provided we have some way of marking which policies are going to conflict:
+
+#+BEGIN_SRC apppal
+A says A isConflictedAbout(X, P) if
+  X is(P),
+  X isNot(P),
+  P isProperty.
+#+END_SRC
+
+Of course this is *precisely* the sort of thing my implementation is slow at evaluating...
+
+
+
+
+*** Design and Evaluation of XACML Conflict Policies Detection Mechanism. /K Singh, S Singh./
+
+Devoid of any merit.
+Claims to show the design and evaluation of a XACML Conflict detection method. 
+But it doesn't: well it sort of does... it just doesn't say how =getConflictDecision(...)= works

@@ -69,7 +69,11 @@ Really useful.   See work from <2016-04-20 Wed>.
 ** Other things
    - David to switch my funding from /Intel/ to /App Guarden/ from /April/ to /June/ for expenses reasons.x
 
-* PhD
+* Log Book
+** <2016-04-15 Fri>
+
+Meeting with David.
+[[file:2016-04-15-Meeting.jpg]]
 ** <2016-04-19 Tue>
 ** <2016-04-20 Wed>
 *** Read /Detecting Incompleteness, Conflicting and Unreachable XACML Policies/.
@@ -102,11 +106,117 @@ A says A isConflictedAbout(X, P) if
 
 Of course this is *precisely* the sort of thing my implementation is slow at evaluating...
 
+** <2016-04-21 Thu>
+- A strange woman has come and fiddled about with DF's computer.
+  - Apparently to upgrade it to SL7.
+- Much learning of Org-mode today
+  - Loving this so much.
+  - It is essentially my notebooks
+
+Quite useful for autoreplacement?
+#+BEGIN_SRC lisp
+(define-abbrev-table 'global-abbrev-table
+  '(("alpha" "α")
+    ("inf" "∞")
+    ("exists" "∃")
+    ("forall" "∀")
+    ("and" "∧")
+    ("or" "∨")))
+(abbrev-mode 1)
+#+END_SRC
 
 
+*** Plan for today
+*** Jobs [4/4]
+- [X] Search for literature on temporally sensitive access control languages
+- [X] Submit expenses claim for iFM
+- [X] What other safety properties might we want for AppPAL with time
+  - first attempt!
+- [X] Sketch change of semantics
+  - first attempt!
+    
+**** Lit Survey 
+***** The Ponder Polcy Specification Language. /Nocodemos Damianou, Naranker Dulay, Emil Lupu, Morris Sloman./
+I've looked at Ponder before, but its got some stuff on this in it so it's worth anouther look.
 
-*** Design and Evaluation of XACML Conflict Policies Detection Mechanism. /K Singh, S Singh./
+Ponder is a policy language with delegation, obligation (if you do this then you *must* do this too), and some form of constraint.
+There is some stuff about composition in here, but it's not general enough and assumes everyone is using (roughly) the same schema.
+Delegations can be limited to within certain timeframes.
 
-Devoid of any merit.
-Claims to show the design and evaluation of a XACML Conflict detection method. 
-But it doesn't: well it sort of does... it just doesn't say how =getConflictDecision(...)= works
+#+BEGIN_SRC ponder
+inst deleg+ (switchPolicyOps) delegSwitchOps {
+   grantee     /DomainAdmin ;
+   target      /Nregion/switches/typeA ;
+   action      enable(), disable();
+   valid       time.duration(24) ;
+}
+#+END_SRC
+
+Doesn't seem to be taken any further than this though.
+***** TODO A Generalized Temporal Role-Based Access Control Model. /JBD Joshi, E Bertino, U Latif, A Ghafoor./
+***** A Spatio-Temporal Role-based Access Control Model. /Inrakshi Ray, Manachai Toahchoodee./
+RBAC based scheme with lots of definitions of constraints and properties you might like to use for access control with time and space concerns.
+Might be useful for stealing some of these constraints, but there isn't any validation that the constraints are the actual ones we want and correct.
+**** Semantics
+We want to introduce some notion of /liveliness/ for AppPAL assertions.
+***** Attempt 1
+- A *time* is an absolute point in time.
+  - =2016-04-19 10:00= means 10am on the 19th of April 2016.
+  - Should be representable as a single number (i.e. seconds since 1970)
+- An *offset* is a relative point in time where:
+  - =0= means now
+  - =+1= means 1 unit of time in the future
+  - =-1= means 1 unit of time in the past
+- A *timeframe* is a tuple of times or offsets =(from, to)=
+  - CONSTRAINT: =from= ≤ =to=.
+
+  - =[-1, +2]= means any time between one second ago, and two seconds into the future.
+  - =[2016-04-19 10:00, 2016-04-20 10:00]= means any time between 10am on the 19th April 2016 and the 20th.
+
+- All assertions are timestamped which we write:
+  - ='alice' says^{2016-04-19 10:00} 'bob' canRead('my-key').=
+  - In general:
+    - /X/ says^t /fact/.
+
+    - If a statement is missing its timestamp, then it is implicitly assumed to be -∞.
+***** Attempt 2
+
+All assertions are made at =[x, y]=, where =x= is the time from which an assertion is valid, and =y= is the time after which it is not valid.
+****** Conditional
+- AC, D |= A says^{[x, y]} f
+  - exists (A says^{[x0, y0]} f if f_1 ... f_n; c) in AC
+  - forall i in [1..n]. AC, D |= A says^{[xi, yi]} f_i
+  - |= c
+  - forall i in [0..n]. x >= x_i and y <= y_i (statement valid at the time)
+  - forall i. x_i <= y_i  (time sanity)
+****** Can Say
+- AC, D |= A says^{[x, y]} fact
+  - AC, D |= A says^{[x0, y0]} B can-say^{[x1, y1]} D' fact
+  - AC, D' |= B says^{[x2, y2]} fact
+  - forall i. x_i <= y_i (time sanity)
+  - forall i in [0..2]. x >= x_i and y <= y_i (statement valid at the time)
+  - x_1 >= x_2 and y_1 <= y_2 (delegated statment fresh)
+****** Can Act As
+- AC, D |= A says^{[x, y]} n vp
+  - AC, D |= A says^{[x0, y0]} m can-act-as^{[x1, y1]} n
+  - AC, D |= A says^{[x2, y2]} m vp
+  - forall i. x_i <= y_i (time sanity)
+  - forall i in [0..2]. x >= x_i and y <= y_i (statement valid at the time)
+  - x_1 >= x_2 and y_1 <= y_2 (role assignment fresh)
+  
+
+***** Properties we might want:
+  - A speaker should be able to say how long any statement by them is valid for.
+
+  - In a conditional, or delegation we should be able to require an assertion to be fresh.
+
+  - An assertion derived from other assertions should not be valid for any longer than any assertion it depends on.
+
+    - i.e. if a proof depends on an expired assertion then that proof is also expired.
+
+  - If a proof was valid at a given point, then it should remain valid (at that given point).
+
+    - i.e. we can check an old decision was sound.
+
+      
+  

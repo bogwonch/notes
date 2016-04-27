@@ -951,8 +951,8 @@ AC, D |= U says^{oblig_0 + oblig_1} f
 
 First day home for ever!
 
-***** TODO Clean desk
-***** TODO Clean fridge
-***** TODO Get membership to Lido
+***** DONE Clean desk
+***** DONE Clean fridge
+***** DONE Get membership to Lido
 ***** TODO Unpack
 ***** TODO Think about what I'm going to do with Ethel Rainicorn.

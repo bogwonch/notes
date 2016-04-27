@@ -195,10 +195,7 @@ Another example:
 'x' says A p
   if A q.
 	 
-'x' says A q
-  if A s, 
-     A t.
-~~~~
+'x' says A q if A s, A t.  ~~~~
 
 This time we expand both rules:
 

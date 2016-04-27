@@ -953,6 +953,11 @@ First day home for ever!
 
 ***** DONE Clean desk
 ***** DONE Clean fridge
-***** DONE Get membership to Lido
+***** DONE Get membership to Lido                             :lido:bill:
+- #58 a month, plus #50 sign-up fee
+- First one covers this month remaining and next one
+- So next payment in June
+***** DONE Go shopping
+- [ ] Chicken Kiev
 ***** TODO Unpack
 ***** TODO Think about what I'm going to do with Ethel Rainicorn.

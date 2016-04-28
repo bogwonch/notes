@@ -39,20 +39,20 @@ What happens when you compose policies from different places which conflict?
 *** TODO Find an expert to ask about policies
     - /Naranka Dulay/ at Imperial?
     - Michael Ravatsos at Edinburgh?
-*** TODO [4/7] Read Papers added to Zotero
-- [ ] XACML 3.0 in Answer Set Programming. /Carroline Dewi Puspa Kencana Ramli, Hanne Riis Nielson, and Flemming Nielson./
+*** DONE [7/7] Read Papers added to Zotero
+- [X] XACML 3.0 in Answer Set Programming. /Carroline Dewi Puspa Kencana Ramli, Hanne Riis Nielson, and Flemming Nielson./
 - [X] The Logic of XACML. /Carroline Dewi Puspa Kencana Ramli, Hanne Riis Nielson, and Flemming Nielson./
 
 Presents formalization of XACML, and derives a logic that represents it.
 Very readable given the dryness of the subject.
     
-- [ ] Access Control via Belnap Logic: Intuitive, Expressive, and Analyzable Policy Composition. /Glenn Bruns, Michael Huth./
+- [X] Access Control via Belnap Logic: Intuitive, Expressive, and Analyzable Policy Composition. /Glenn Bruns, Michael Huth./
 - [X] Access Control in an Open Distributed Environment. /R.J. Hayton, J.M. Bacon, K. Moody./
 
 Seems to be an explanation of an early OASIS based system.
 Not sure what's meant to be interesting about it.
 
-- [ ] Formalisation and Implementation of the XACML Access Control Mechanism. /Massimilano Masi, Roario Pugliese, Francesco Tiezzi./
+- [X] Formalisation and Implementation of the XACML Access Control Mechanism. /Massimilano Masi, Roario Pugliese, Francesco Tiezzi./
 - [X] Synthesising Verified Access Control Systems in XACML. /Nan Zhang, Mark Ryan, Dimitar P. Guelev./
 
 They take a toy system called RW and show how it can be implemented in XACML.
@@ -127,7 +127,6 @@ Quite useful for autoreplacement?
     ("or" "∨")))
 (abbrev-mode 1)
 #+END_SRC
-
 
 ***** Plan for today
 ***** Jobs [4/4]
@@ -973,3 +972,5 @@ First day home for ever!
 #+TBLFM: $3=@4$3+@5$2
 
 ***** TODO Continue with lit review
+
+Got Zotero installed.  Waiting for sync.

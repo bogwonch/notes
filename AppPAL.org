@@ -960,4 +960,16 @@ First day home for ever!
 ***** DONE Go shopping
 - [ ] Chicken Kiev
 ***** TODO Unpack
-***** TODO Think about what I'm going to do with Ethel Rainicorn.
+***** DONE Think about what I'm going to do with Ethel Rainicorn.
+**** <2016-04-28 Thu>
+***** DONE Sort University VPN
+***** DONE Work out finances for the month
+|                   |  Balance | Total |
+|-------------------+----------+-------|
+| Initial Amount    |  5375.00 | 5375. |
+| Nan's Inheritance | -1175.00 | 4200. |
+| Last three months | -2400.00 | 1800. |
+| Buffer            |  -500.00 | 1300. |
+#+TBLFM: $3=@4$3+@5$2
+
+***** TODO Continue with lit review

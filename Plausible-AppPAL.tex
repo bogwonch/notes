@@ -1,0 +1,137 @@
+\documentclass[a4paper]{article}
+
+\usepackage{proof}
+\usepackage{mathtools}
+\usepackage[dvipsnames]{xcolor}
+
+\newcommand{\new}[1]{{\color{BrickRed} #1}}
+\newcommand{\ac}[0]{\ensuremath\text{AC}}
+\newcommand{\secpalmath}[1]{\ensuremath\texttt{#1}}
+\newcommand{\says}[1]{\secpalmath{says}^{\new{#1}}}
+\newcommand{\canSay}[1]{\secpalmath{can-say}_{#1}}
+\newcommand{\canActAs}[0]{\secpalmath{can-act-as}}
+\newcommand{\spif}[0]{\secpalmath{if}}
+\newcommand{\where}[0]{\secpalmath{where}}
+
+\title{Plausable SecPAL}
+\author{Joseph Hallett}
+\begin{document}
+\maketitle
+
+The SecPAL authorization language, and the AppPAL instantiation, allow policy authors to make use of static analysis tools to make decisions, and allow principals to make statements about apps through delegation.
+When these decisions are made they are made with certainty.  If a principal says an app is safe to access the network then we believe that that principal definitely believes the app is safe on a network.
+When a static analysis tool finds that an app isn't malware then we believe that app to not be malware.
+This isn't realistic.  
+Static analysis tools can produce false results.  
+A principal might be merely fairly confident that an app can access the network but not absolutely certain.
+
+With current authorization languages, such as AppPAL and XACML, there is no way to quantify the belief a principal has in any statement.
+A principal cannot say how plausable they think any statement is.
+
+\section{Why do we need this?}
+
+SecPAL was designed for making access control decisions.
+The decision whether to install allow a user access to a file or not is a binary one: either they can access it or they cannot.
+Similarly the decision process for these decisions is also binary: a user is either logged in or not, a network address is either in the network or outside it, someone can act as someone else's manager or they can not.
+
+AppPAL, however, is primarily for deciding what apps you want to use.
+Whether you want to install an app or not is less binary than an access control decision, because it is ultimately an opinion.
+Consider a really simple policy that says \emph{``do not install malware''}:
+  you could try using a malware scanner to check apps, but there opinions on apps can change rapidly and often.
+You could use a meta-scanning tool like \emph{VirusTotal}, but then you'd only get the percentage of antivirus tools that flagged the app as malicious.
+Without plausability we cannot represent the doubt and confidence in any assertion.
+
+For another example consider a policy you only want to install apps that are made by \emph{reputable} developers and that are \emph{safe}.
+Both reputable and safe are poorly defined, and badly represented by a binary decision.
+A developer may be reputable if they are a large developer with a lot of staff like Google or Facebook, they might be reputable if their apps have been well reviewed, but what about a developer like \emph{King} who produce a large number of games with in-app-purchases, TV adverts, and sketchy privacy records.  They are probably more reputable than a malware author but you might have less confidence that they are producing good apps than Google.  Similarly an app might be seen as safe if it doesn't request any permissions and has no native code, but if it starts requesting more permissions and the amount of native code grows then the plausability it is safe should fall. 
+When combined into the policy as a whole Google may be able to get away with a lot more permissions than other developers simply because we trust them more not to be evil.
+Again, without plausability it is difficult to represent these decisions.
+
+\section{Bending the Rules}
+
+SecPAL has three rules for evaluation: \emph{cond}, \emph{can-say}, and \emph{can-act-as}.
+We modify the language so that the \emph{says} keyword has an an annotation $0 \geq p \geq 1$ denoting a statements \emph{plausability}.
+If the annotation is missing then it is assumed to be $1$
+We also assume a plausability combining function $\oplus$ which combines plausability.
+The SecPAL inference rules then become as follows, with additions highlighted in \new{red}. 
+
+\begin{eqnarray}
+  \infer[\text{cond}]{
+    \ac, D \models A~\says{\bigoplus_{i=1}^n p_i}~f\theta
+  }{
+    \begin{matrix}{
+      \left(A~\says{p_{lim}}~f~if~f_1\cdots f_n~\where~c\right) \in \ac
+    }\\{
+      \forall i \in [1\cdots n]. \ac, D \models A~\says{p_i}~f_i\theta
+    }\\\new{
+      0 < p_{lim} \leq \bigoplus_{i=1}^n p_i
+    }
+    \end{matrix}&
+    \vdash c\theta &
+    vars\left(f\theta\right) = \emptyset
+  }
+  \\
+  \infer[\text{can-say}]{
+    \ac, \infty \models A~\says{p_1 \oplus p_2}~f
+  }{
+    \ac, \infty \models A~\says{p_1}~B~\canSay{D}~f &
+    \ac, D \models B~\says{p_2}~f
+  }
+  \\
+  \infer[\text{can-act-as}]{
+    \ac, D \models A~\says{p_1 \oplus p_2}~x~vp
+  }{
+    \ac, D \models A~\says{p_1}~y~\canActAs~x &
+    \ac, D \models B~\says{p_2}~y~vp
+  }
+  \\
+  \new{
+    \infer[\text{reduce}]{
+        \ac, D \models A~\says{p}~f
+    }{
+        \ac, D \models A~\says{p^\prime}~f & p \leq p^\prime
+    }
+  }
+\end{eqnarray}
+
+In general any derived statement is at most as plausible as the combination of the statements that went into deriving it.  The \emph{cond} rule is a little more complex as the the combination of the conditional plausabilities must be greater than the plausability of the rule as a whole. We also add a plausability reduction rule that allows us to reduce the plausability of an assertion, this allows us to phrase a policy query as \emph{``is it at least 50\% plausable that...''} rather than having to discover the plausabilities precisely.
+
+\subsection{Plausability Combination}
+
+How should the plausability combination operator be defined?
+One simplistic approach might be to take the least plauable assertion as the final value.
+This however is too simple. Consider the case where an app needs to be safe and from a reputable developer.  Say we're 50\% sure the app is safe but we are unsure of the developer. We are 90\% sure Google is reputable and only 60\% sure King is.  No matter who the developer is the combined probability is the same (50\%) so the distinction is lost.
+
+\begin{equation}
+  p_a~\oplus_{\text{min}}~p_b~\gets~\text{min}~p_a~p_b
+\end{equation}
+
+If we are sure the plausabilities are independent we could multiply them together to get the final plausability. This is appealing in that if we take the example above if Google is the developer we're 45\% sure the app is usable, but only 30\% if King is.  If however there are a lot of combinations to be made the probabilities may get very small and be difficult to distinguish.
+
+\begin{equation}
+  p_a~\oplus_{\text{ind}}~p_b~\gets~p_a\times p_b
+\end{equation}
+
+What we \emph{probably} want is some form of \emph{Dempster-Shafer} belief combination algorithm.  Seems to be a fair bit of work here from the Expert Systems perople but I can't see them being applied to authorizatin logics before.
+
+\textbf{TODO Learn more about them}
+
+ 
+\section{What Guarantees Do We Want?}
+
+\begin{itemize}
+\item If all statements have a plausability of $1$, then this is equivalent to standard SecPAL.
+\item If a statement has a plauability of $0$, then it is equivalent to the statement not existing in the assertion context.
+\end{itemize}
+
+Point 1 is true since if $p_{\text{lim}} = 1$ then no statement will be accepted unless its plausability is also 1.
+If we combine the plausability of two events this will also be 1 (using either method described so far):
+    hence the restriction on the plausability in the cond rule is always true since all statements have a plausability of one.
+Rewriting the rules with this in mind we get the original SecPAL inference rules, so if all statements have a plausability of 1, then this must be equivalent to standard SecPAL.
+
+Point 2 is also true by the restriction on probabilities in the cond rule.
+Since $p_{\text{lim}}$ must be greater than 0, if a statement has a plausability of 0 then it will not be accepted.
+Similarly when combining plausabilities if a statement is completely inplausible then the plausibility of it happening with another event must also be implausible.
+Hence the combination should always be 0, and no statement combined with an implausible statement will be derivable.
+
+\end{document}

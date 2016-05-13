@@ -1,0 +1,17 @@
+* How do I convert a PDF to a series of images?
+
+Where density is the DPI, and quality is 100% (i.e. no down scaling)
+Files will be called =outfile_1.jpg= and so on.  You probably want to extract to its own folder.
+
+#+BEGIN_SRC sh
+function pdf-to-jpegs() {
+    local infile="${1?input file}"
+    local outfile="$(basename "${infile}" .pdf).jpeg"
+    local outdir="$(basename "${infile}")"
+    
+    mkdir "${outdir}"
+    convert -density 600 "${infile}" -quality 100 "${outdir}/${outfile}"
+}
+#+END_SRC
+
+

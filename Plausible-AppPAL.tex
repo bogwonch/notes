@@ -2,6 +2,8 @@
 
 \usepackage{proof}
 \usepackage{mathtools}
+\usepackage{listings}
+\usepackage{rotating}
 \usepackage[dvipsnames]{xcolor}
 
 \newcommand{\new}[1]{{\color{BrickRed} #1}}
@@ -56,11 +58,26 @@ We also assume a plausability combining function $\oplus$ which combines plausab
 The SecPAL inference rules then become as follows, with additions highlighted in \new{red}. 
 
 \begin{eqnarray}
-  \infer[\text{cond}]{
+  \infer[\text{cond\new{<}}]{
     \ac, D \models A~\says{\bigoplus_{i=1}^n p_i}~f\theta
   }{
     \begin{matrix}{
-      \left(A~\says{p_{lim}}~f~if~f_1\cdots f_n~\where~c\right) \in \ac
+      \left(A~\says{\text{at least}~p_{lim}}~f~if~f_1\cdots f_n~\where~c\right) \in \ac
+    }\\{
+      \forall i \in [1\cdots n]. \ac, D \models A~\says{p_i}~f_i\theta
+    }\\\new{
+      0 < p_{lim} \leq \bigoplus_{i=1}^n p_i
+    }
+    \end{matrix}&
+    \vdash c\theta &
+    vars\left(f\theta\right) = \emptyset
+  }
+  \\
+  \infer[\text{cond\new{=}}]{
+    \ac, D \models A~\says{p_{lim}}~f\theta
+  }{
+    \begin{matrix}{
+      \left(A~\says{\text{is}~p_{lim}}~f~if~f_1\cdots f_n~\where~c\right) \in \ac
     }\\{
       \forall i \in [1\cdots n]. \ac, D \models A~\says{p_i}~f_i\theta
     }\\\new{
@@ -94,7 +111,10 @@ The SecPAL inference rules then become as follows, with additions highlighted in
   }
 \end{eqnarray}
 
-In general any derived statement is at most as plausible as the combination of the statements that went into deriving it.  The \emph{cond} rule is a little more complex as the the combination of the conditional plausabilities must be greater than the plausability of the rule as a whole. We also add a plausability reduction rule that allows us to reduce the plausability of an assertion, this allows us to phrase a policy query as \emph{``is it at least 50\% plausable that...''} rather than having to discover the plausabilities precisely.
+In general any derived statement is at most as plausible as the combination of the statements that went into deriving it.  We split the \emph{cond} rule into two variants.  The \emph{cond<} rule allows us to specify a minimum plausability required by combining all the conditional statements and if that limit is exceeded we take the combined probability in the plausability of the outcome.
+The \emph{cond=} rule allows us again to set a minimum plausability but this time we take the stated plausability if the rule is satisfied.  These two \emph{cond} rules serve different purposes.  The \emph{cond=} variant is useful when we want to set a limit on the plausability: for instance when we have a tool with a known confidence rate we want to run, or a fact which we know how plausible it is.  The \emph{cond<} rule is useful for when you want to ensure that a decision is made with a certain least-confidence, for instance if you want to be at least 80\% sure that an app is safe to use before doing anything with it.  In this case we would want the combined plausability to trickle through the proof not the lower limit.
+
+We also add a plausability reduction rule that allows us to reduce the plausability of an assertion, this allows us to phrase a policy query as \emph{``is it at least 50\% plausable that...''} rather than having to discover the plausabilities precisely.
 
 \subsection{Plausability Combination}
 
@@ -116,8 +136,7 @@ What we \emph{probably} want is some form of \emph{Dempster-Shafer} belief combi
 
 \textbf{TODO Learn more about them}
 
- 
-\section{What Guarantees Do We Want?}
+\section{What Guarantees Do We Want?} 
 
 \begin{itemize}
 \item If all statements have a plausability of $1$, then this is equivalent to standard SecPAL.
@@ -133,5 +152,78 @@ Point 2 is also true by the restriction on probabilities in the cond rule.
 Since $p_{\text{lim}}$ must be greater than 0, if a statement has a plausability of 0 then it will not be accepted.
 Similarly when combining plausabilities if a statement is completely inplausible then the plausibility of it happening with another event must also be implausible.
 Hence the combination should always be 0, and no statement combined with an implausible statement will be derivable.
+
+\section{Examples}
+
+\subsection{Tools with Confidences}
+
+Suppose we have a static analysis tool with a false positive rate of 10\%, (i.e.~one app in ten it will falsely flag as having issues when infact it is fine).
+
+\begin{lstlisting}
+'user' says App isSafe
+  if App isAnApp
+  where staticAnalyisTool(App) = true
+  with plausability is 0.9.
+\end{lstlisting}
+
+\subsection{Review scores}
+
+When picking games we may rely on expert reviewers to suggest apps to us.
+It is very common to give reviewed items a score at the end of the review.
+
+\begin{lstlisting}
+'less-trusted-reviewer' says 'angry-birds' isGood
+  with plausability is 0.8.
+
+'trusted-reviewer' says 'angry-birds' isGood
+  with plausability is 0.9.
+\end{lstlisting}
+
+We might also trust some reviewers more than others, again we can express this screnario with plausability and attempt to normalize their scores somewhat.
+
+\begin{lstlisting}
+'user' says 'trusted-reviewer' can-say App isGood
+  if App isAnApp
+  with plausability is 1.0.
+
+'user' says 'less-trusted-reviewer' can-say App isGood
+  if App isAnApp
+  with plausability is 0.5.
+\end{lstlisting}
+
+When we come to picking an app though we might like to rely on multiple bits of information however.
+
+\begin{lstlisting}
+'user' says App isInstallable
+  if App isGood,
+     App isSafe
+  with plausability at least 0.75.
+\end{lstlisting}
+
+Our proof trees from these statements might look something like this:
+
+\begin{equation}
+  \begin{sideways}
+  \tiny
+\begin{equation}
+  \infer{%
+    \ac\models 'user' \says{(1.0 \oplus 0.9) \oplus 0.9} 'angry-birds' isInstallable.
+  }{%
+    \infer{
+      \ac\models 'user' \says{1.0 \oplus 0.9} 'angry-birds' isGood.
+    }{
+      \infer{\ac\models 'user' \says{1.0} 'trusted-reviewer' can-say 'angry-birds' isGood.}{} &
+      \infer{\ac\models 'trusted-reviewer' \says{0.9} 'angry-birds' isGood.}{}
+    } &
+    \infer{
+      \ac\models 'user' \says{0.9} 'angry-birds' isSafe.
+    }{
+      \infer{\ac\models 'user' \says{} 'angry-birds' isAnApp.}{} &
+      \infer{\vdash staticAnalyisTool('angry-birds') = true}
+    }
+  }
+\end{equation}
+  \end{sideways}
+\end{equation}
 
 \end{document}

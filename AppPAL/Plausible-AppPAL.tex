@@ -6,6 +6,22 @@
 \usepackage{rotating}
 \usepackage[dvipsnames]{xcolor}
 
+\lstdefinelanguage{AppPAL}{%
+  morekeywords={if,inf,says,where,true,false,with,is},
+  otherkeywords={can-act-as,can-say},
+  sensitive=true,
+  morestring=[b]',
+  literate={\ inf\ }{{$\infty$}}5
+}[keywords,strings]
+% Margin listings
+\lstset{%
+  basicstyle=\ttfamily\footnotesize{},
+  stringstyle=\sffamily\footnotesize{},
+  keywordstyle=\ttfamily\slshape\footnotesize{},
+  language=AppPAL,
+  columns=flexible
+}
+
 \newcommand{\new}[1]{{\color{BrickRed} #1}}
 \newcommand{\ac}[0]{\ensuremath\text{AC}}
 \newcommand{\secpalmath}[1]{\ensuremath\texttt{#1}}
@@ -57,8 +73,9 @@ If the annotation is missing then it is assumed to be $1$
 We also assume a plausability combining function $\oplus$ which combines plausability.
 The SecPAL inference rules then become as follows, with additions highlighted in \new{red}. 
 
+{\footnotesize\centering
 \begin{eqnarray}
-  \infer[\text{cond\new{<}}]{
+  \infer[\text{cond\new{$\leq$}}]{
     \ac, D \models A~\says{\bigoplus_{i=1}^n p_i}~f\theta
   }{
     \begin{matrix}{
@@ -110,9 +127,10 @@ The SecPAL inference rules then become as follows, with additions highlighted in
     }
   }
 \end{eqnarray}
+}
 
-In general any derived statement is at most as plausible as the combination of the statements that went into deriving it.  We split the \emph{cond} rule into two variants.  The \emph{cond<} rule allows us to specify a minimum plausability required by combining all the conditional statements and if that limit is exceeded we take the combined probability in the plausability of the outcome.
-The \emph{cond=} rule allows us again to set a minimum plausability but this time we take the stated plausability if the rule is satisfied.  These two \emph{cond} rules serve different purposes.  The \emph{cond=} variant is useful when we want to set a limit on the plausability: for instance when we have a tool with a known confidence rate we want to run, or a fact which we know how plausible it is.  The \emph{cond<} rule is useful for when you want to ensure that a decision is made with a certain least-confidence, for instance if you want to be at least 80\% sure that an app is safe to use before doing anything with it.  In this case we would want the combined plausability to trickle through the proof not the lower limit.
+In general any derived statement is at most as plausible as the combination of the statements that went into deriving it.  We split the \emph{cond} rule into two variants.  The \emph{cond$\leq$} rule allows us to specify a minimum plausability required by combining all the conditional statements and if that limit is exceeded we take the combined probability in the plausability of the outcome.
+The \emph{cond=} rule allows us again to set a minimum plausability but this time we take the stated plausability if the rule is satisfied.  These two \emph{cond} rules serve different purposes.  The \emph{cond=} variant is useful when we want to set a limit on the plausability: for instance when we have a tool with a known confidence rate we want to run, or a fact which we know how plausible it is.  The \emph{cond$eq$} rule is useful for when you want to ensure that a decision is made with a certain least-confidence, for instance if you want to be at least 80\% sure that an app is safe to use before doing anything with it.  In this case we would want the combined plausability to trickle through the proof not the lower limit.
 
 We also add a plausability reduction rule that allows us to reduce the plausability of an assertion, this allows us to phrase a policy query as \emph{``is it at least 50\% plausable that...''} rather than having to discover the plausabilities precisely.
 
@@ -141,6 +159,7 @@ What we \emph{probably} want is some form of \emph{Dempster-Shafer} belief combi
 \begin{itemize}
 \item If all statements have a plausability of $1$, then this is equivalent to standard SecPAL.
 \item If a statement has a plauability of $0$, then it is equivalent to the statement not existing in the assertion context.
+\item No statement should be more certain than the conditionals used to derive it.
 \end{itemize}
 
 Point 1 is true since if $p_{\text{lim}} = 1$ then no statement will be accepted unless its plausability is also 1.
@@ -153,6 +172,26 @@ Since $p_{\text{lim}}$ must be greater than 0, if a statement has a plausability
 Similarly when combining plausabilities if a statement is completely inplausible then the plausibility of it happening with another event must also be implausible.
 Hence the combination should always be 0, and no statement combined with an implausible statement will be derivable.
 
+Point 3 is important as we don't want a means to make a statement more certain
+by repeatedly applying a rule.  For example imagine we had a combination
+operator that took the sum (or 1 if the combination was greater than 1), and a
+rule such as:
+\begin{lstlisting} 
+'x' says 'y' p if 'y' p, 'y' p.
+\end{lstlisting}
+If we also have statement that $x \says{0.2} y p$, then we
+could apply this rule to get $x \says{0.4} y p$, and so on until we're certain.
+
+Similarly if we had statements  such as:
+\begin{lstlisting} 
+'x' says 'y' p 
+  if 'y' p,
+     'z' p.
+\end{lstlisting}
+And we knew that $'x'\says{1.0} 'z' p$, if we used a plausability combination function where we took the average then we could again increase the certainty of $'x'\says{} 'y' p.$.
+
+The multiplication and minimum plausability rules won't allow you to increase plausability like this (minimum is trivial: if it is always the plausability of the least plausible statement then plausabilities will never increase; multiplication works because if all plausabilities are between 1 and 0, then the product will also never increase).
+
 \section{Examples}
 
 \subsection{Tools with Confidences}
@@ -164,6 +203,19 @@ Suppose we have a static analysis tool with a false positive rate of 10\%, (i.e.
   if App isAnApp
   where staticAnalyisTool(App) = true
   with plausability is 0.9.
+\end{lstlisting}
+
+This is useful because we might want to treat static analysis results, along with other information, as more reliable.  For instance we might say an app which isn't malware is good, but an app that isn't malware and is recommended by a friend is even better!
+
+\begin{lstlisting}
+'user' says App isGood
+  if App isntMalware
+  with plausability is 0.5.
+
+'user' says app isGood
+  if App isntMalware,
+     App isRecommended
+  with plausability is 0.8.
 \end{lstlisting}
 
 \subsection{Review scores}
@@ -200,28 +252,5 @@ When we come to picking an app though we might like to rely on multiple bits of 
   with plausability at least 0.75.
 \end{lstlisting}
 
-Our proof trees from these statements might look something like this:
-
-\begin{equation}
-  \begin{sideways}
-  \tiny
-  \infer{%
-    \ac\models 'user' \says{(1.0 \oplus 0.9) \oplus 0.9} 'angry-birds' isInstallable.
-  }{%
-    \infer{
-      \ac\models 'user' \says{1.0 \oplus 0.9} 'angry-birds' isGood.
-    }{
-      \infer{\ac\models 'user' \says{1.0} 'trusted-reviewer' can-say 'angry-birds' isGood.}{} &
-      \infer{\ac\models 'trusted-reviewer' \says{0.9} 'angry-birds' isGood.}{}
-    } &
-    \infer{
-      \ac\models 'user' \says{0.9} 'angry-birds' isSafe.
-    }{
-      \infer{\ac\models 'user' \says{} 'angry-birds' isAnApp.}{} &
-      \infer{\vdash staticAnalyisTool('angry-birds') = true}
-    }
-  }
-  \end{sideways}
-\end{equation}
 
 \end{document}

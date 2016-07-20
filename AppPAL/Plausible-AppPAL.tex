@@ -15,11 +15,12 @@
 }[keywords,strings]
 % Margin listings
 \lstset{%
-  basicstyle=\ttfamily\footnotesize{},
-  stringstyle=\sffamily\footnotesize{},
-  keywordstyle=\ttfamily\slshape\footnotesize{},
+  basicstyle=\ttfamily,
+  stringstyle=\sffamily,
+  keywordstyle=\ttfamily\slshape,
   language=AppPAL,
-  columns=flexible
+  columns=flexible,
+  mathescape,
 }
 
 \newcommand{\new}[1]{{\color{BrickRed} #1}}
@@ -115,7 +116,7 @@ The SecPAL inference rules then become as follows, with additions highlighted in
   \infer[\text{can-act-as}]{
     \ac, D \models A~\says{p_1 \oplus p_2}~x~vp
   }{
-    \ac, D \models A~\says{p_1}~y~\canActAs~x &
+    \ac, D \models A~\says{p_1}~x~\canActAs~y &
     \ac, D \models B~\says{p_2}~y~vp
   }
   \\
@@ -188,7 +189,7 @@ Similarly if we had statements  such as:
   if 'y' p,
      'z' p.
 \end{lstlisting}
-And we knew that $'x'\says{1.0} 'z' p$, if we used a plausability combination function where we took the average then we could again increase the certainty of $'x'\says{} 'y' p.$.
+And we knew that $'x'\says{1.0}{} 'z' p$, if we used a plausability combination function where we took the average then we could again increase the certainty of $'x'\says{}{} 'y' p.$.
 
 The multiplication and minimum plausability rules won't allow you to increase plausability like this (minimum is trivial: if it is always the plausability of the least plausible statement then plausabilities will never increase; multiplication works because if all plausabilities are between 1 and 0, then the product will also never increase).
 
@@ -252,5 +253,96 @@ When we come to picking an app though we might like to rely on multiple bits of 
   with plausability at least 0.75.
 \end{lstlisting}
 
+\section{Translation to Datalog (with constraints, and bounded numbers)}
+
+To evaluate this, it would be nice to show, (as Becker did) that these rules are reducible to some form of Datalog.
+This would show we haven't mucked about with the decidability of SecPAL.
+To do this I show an updated form of Becker's Algorithm 5.2 from the SecPAL reference document:
+
+\subsection{A Plausible Algorithm 5.2}
+
+We now describe an algorithm for translating an assertion context into an equivalent
+constrained Datalog program. We treat expressions of the form $e_1 says_k fact$ as Datalog
+literals, where $k$ is either a variable or 0 or $\infty$. This can be seen as a sugared notation for
+a literal where the predicate name is the string concatenation of all infix operators (\textsf{says},
+\textsf{can-say}, \textsf{can-act-as}, and predicates) occurring in the expression, including subscripts for
+\textsf{can-say}. The arguments of the literal are the collected expressions between these infix
+operators. For example, the expression $A~says_k^{\new{p}}~x~can say_\infty~y~can say_0~B~can act as~z$ is
+shorthand for \texttt{says\_cansay\_infinity\_cansay\_zero\_canactas(A, \new{p}, k, x, y, B, z)}.
+
+Given an assertion: 
+\begin{center} \lstinline!$A$ says $f_0$ if $f_1\cdots f_n$ where $c$ with plausability $p$.! \end{center}
+
+\begin{enumerate}
+\item 
+  If $f_0$ is flat (it isn't a can-say statement), then the assertion is translated into the clause:
+  \begin{lstlisting}[language=Prolog]
+$A$ says$_k^{\new{p_*}}$ $f_0$ :- 
+    $A$ says$_k^{\new{p_1}}$ $f_1$ $\cdots$ $A$ says$_k^{\new{p_n}}$ $f_n$, c, 
+    $\new{p_\Sigma \text{ is } p_1 \oplus \cdots \oplus p_n}$, 
+    $\new{0 < p_{lim} \leq p_\Sigma}$.
+  \end{lstlisting}
+  Where $k$ is a fresh variable \new{and $p_*$ is $p_{lim}$ if the plausability is \texttt{is}, and $p_\Sigma$ is it is \texttt{at least}}.
+  
+\item 
+  Otherwise $f_0$ is of the form \lstinline!$e_0$ can-say $D_0$ $\cdots$ $e_{n-1}$ can-say $D_{n-1}$ $f$! where $f$ is flat.
+  Let $f^\prime_n \equiv f$ and \lstinline!$f^\prime_i \equiv e_i$ can-say $D_i$ $f^\prime_{i+1}$!, for $i\in\left\{0\cdots n-1\right\}$.
+  Note that $f_0 = f^\prime_0$.  
+
+  Then the assertion \lstinline!$A$ says $f_0$ if $f_1\cdots f_m$, c, with plausability $p$! is translated into a set of $n+1$ Datalog rules as follows.
+  
+  \begin{enumerate}
+  \item 
+    We add the Datalog rule:
+    \begin{lstlisting}[language=Prolog]
+$A$ says$_k^{\new{p_*}}$ $f^\prime_0$ :-
+    $x$ says$_k^{\new{p_1}}$ $f_1\cdots$ $A$ says$_k^{\new{p_m}}$ $f_m$, c,
+    $\new{p_\Sigma \text{ is } p_1 \oplus \cdots \oplus p_n}$, 
+    $\new{0 < p_{lim} \leq p_\Sigma}$.
+    \end{lstlisting}
+    Where $k$ is a fresh variable, \new{and $p_*$ is $p_{lim}$ if the plausability is \texttt{is}, and $p_\Sigma$ is it is \texttt{at least}}.
+
+  \item
+    For each $i\in\left\{1\cdots n\right\}$, we add a Datalog rule
+    \begin{lstlisting}[language=Prolog]
+$A$ says$_\infty^{\new{p_*}}$ $f^\prime_i$ :-
+    $x$ says$_{D_{i-1}}^{\new{p_1}}$ $f^\prime_i$,
+    $A$ says$_{\infty}^{\new{p_2}}$ $x$ can-say $D_{i-1}$ $f^\prime_i$,
+    $\new{p_* \text{ is } p_1\oplus p_2}$, 
+    $\new{0 < p_* \leq 1}$.
+    \end{lstlisting}
+    Where $x$ is a fresh variable.
+  \end{enumerate}
+  
+  \item
+    For each Datalog rule created above of the form:
+    \begin{lstlisting}[language=Prolog]
+      $A$ says$_k^p$ $e$ $v$ :- $\cdots$
+    \end{lstlisting}
+    we add a rule:
+
+    \begin{lstlisting}[language=Prolog]
+$A$ says$_\infty^{\new{p_*}}$ $e$ $v$ :-
+    $x$ says$_{k}^{\new{p_1}}$ $x$ can-act-as $e$,
+    $A$ says$_{k}^{\new{p_2}}$ $e$ $v$,
+    $\new{p_* \text{ is } p_1\oplus p_2}$, 
+    $\new{0 < p_* \leq 1}$.
+    \end{lstlisting}
+    Where $x$ is a fresh variable.  Note that $k$ is not a fresh variable, but either a constant or a variable taken from the original rule.
+    
+
+    \new{
+      We also add an additional rule (to account for the reduce rule)
+      that should not be used in general, but only when trying to reduce the
+      plausability to account for a lower bound on plausability in a query:
+      }
+      
+      \begin{lstlisting}[basicstyle=\color{BrickRed}\ttfamily]
+$A$ says$_k^{p_\downarrow}$ $e$ $v$ :- 
+    $A$ says$_k^p$ $e$ $v$,
+    $p_\downarrow \leq p$.
+      \end{lstlisting}
+\end{enumerate}
 
 \end{document}
+-

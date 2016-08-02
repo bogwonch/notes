@@ -1,0 +1,32 @@
+* Housework                                                       :housework:
+** DONE [#A] Broken shutter in living room
+CLOSED: [2016-07-22 Fri 13:56] SCHEDULED: <2016-07-23 Sat>
+The right shutter of the left set of blinds (furthest from the door) has lost its pin on the top join.
+Have rigged it with a safety pin for now but in needs fixing properly
+
+Screw on bottom could do with replacing, but hammered old pin back in for now.:q
+ 
+
+*** TODO Get new hinge for shutter
+*** TODO [#A] Fix shutter
+** TODO Fix front door keyhole
+** TODO Repaint front door
+** TODO Fix light switch in bathroom
+* Meet ups
+** Meeting Yue for Dinner <2016-07-27 19:00 Wed>
+*** DONE Confirm with Yue for <2016-07-27 Wed>
+CLOSED: [2016-07-26 Tue 13:07] SCHEDULED: <2016-07-26 Tue>
+
+*** DONE Where? When?
+CLOSED: [2016-07-27 Wed 13:33]
+
+
+That nice Spanish/Greek tapas place at 7pm.
+** TODO Meeting up with Siân
+DEADLINE: <2016-08-02 Sun>
+- Some time in next three weeks in Kent.
+- Doesn't have a spare room anymore.
+- Siân is a dick 
+  
+- Probably 6-7 August, but to confirm once EB knows what she's doing.
+

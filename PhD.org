@@ -1,0 +1,155 @@
+* Thesis
+* Meetings
+** TODO Meeting with David <2016-07-27 14:00 Wed>
+*** DONE Prep [6/6]
+CLOSED: [2016-07-27 Wed 13:35] DEADLINE: <2016-07-27 Wed 14:00>
+**** DONE Print policy translations
+CLOSED: [2016-07-27 Wed 11:11]
+**** DONE Print plausability note
+CLOSED: [2016-07-27 Wed 11:36]
+**** DONE Print BYOD draft
+CLOSED: [2016-07-27 Wed 11:36]
+**** DONE Go over AppPAL checkers
+CLOSED: [2016-07-27 Wed 13:32]
+**** DONE Go over plausability
+CLOSED: [2016-07-27 Wed 13:35]
+**** DONE Create examples of AppPAL checkers finding things
+CLOSED: [2016-07-27 Wed 12:25]
+*** What do I want to talk about?
+
+- AppPAL as a tool for reasoning not enforcement
+- Advice for where to go with the paper
+  - Keep it medical or expand out and have a bit of a focus on the medical issues too
+  - Publishing where?
+  - Is this interesting?
+  - Linters
+    - Demo
+    - What do we want to do with this?
+- Plausability work
+  - It seems to be cute rather than useful.
+  - It really seems like no one has done it before
+  - Lots of existing work on building logics with probability
+    - Some stuff on Datalog-variants
+    - But they all end up unsound or with other nasty edges (or incorrect)
+      - Independence is a problem
+        - Though I think we can have a rule that all apppal statements ought to be independent anyway which neatly gets around that problem.
+          - If two proofs use the same statements they're not independent.
+- Thesis and the future
+  - Knowledge distribution protocol?
+  - Thesis writing
+*** Notes from meeting
+Have a look at the work of
+- [[http://www.ecs.soton.ac.uk/people/vs#publications][Vladimiro Sassone]]
+- [[http://www.law.ed.ac.uk/people/burkhardschafer][Burkhard Schafer]]
+
+Switch between design chapters and then practical chapters
+
+Intro:
+
+What is the thesis of the thesis?
+What is the main contribututions?
+Comparison
+
+SecPAL showing the typed version AppPAL (sugar syntax)
+
+Background:
+
+Mobile ecosystems -> section title not chapter.
+ research background prior work.  
+Keep prior work in separate chapter, and keep my contributions very separate.
+
+Introduce apppal then show applications.
+
+Introduce conventions, and some of the tooling.
+What did *I* do with the different stores.
+Applications of apppal?
+- App stores formats,
+- Applications 
+
+Analysis of policies
+
+- Corporate policies (BYOD)
+*** Other stuff
+What are the semantics of a SecPAL query?
+
+- [|Policy|] : Query -> Result
+- [|Query|] : Policy -> Result
+- [|Result|] : Maybe (Query, Renaming, Proof)
+
+Tools 
+
+- Would be nice if we could see who is responsible for what in a policy.
+  - Would help with comparisons between policies.
+
+*** Jobs
+
+**** TODO Put your thesis together and see what you have
+**** TODO Produce summaries for each BYOD documents
+Try and get it automatically
+Who is tied to each decision?
+
+* AppPAL BYOD Policy Translations
+
+We have 5 different policy documents from various BYOD sources.
+
+- NHS
+  - a hospital trust one
+- SANS
+  - a more general advice document
+- HiMSS
+  - a healthcare advice one
+- Edinburgh
+  - Edinburgh's one
+- Code3PSE
+  - a company specializing in emergency sirens's one they stuck online
+  
+*** What do we want to do with the paper?
+
+Most (all?) existing BYOD work looks at how to enforce a BYOD policy through
+technical means. This is part of the problem, but it is also interesting to
+think about what the policy should be in the first place. Who is responsible for
+setting the policy? What kinds of things do you want to be able to say? What is
+idiomatic?
+
+Can we extend AppPAL to detect problems ahead of time; especially consistency or
+redundancy or completeness.
+
+Currently we're trying to focus on healthcare ones, as the story is more
+compelling there (I feel) as there is more need to ensure the policy is correct.
+However having /more/ policies is also nice, and maybe we could drop it down to
+being about policies in general, with a more focused section on the medical
+ones.
+
+*** Jobs
+
+**** DONE make sure that the code3pse policy is finished.
+CLOSED: [2016-07-26 Tue 13:06]
+**** TODO make sure that the edinburgh policy is finished.
+* AppPAL with Plausability
+
+There's a lot of work on having probabilistic logics, but not anything on applying them to authorization.
+I don't even think we'd necessarily have to create our own, just show that AppPAL+Plausability would reduce to one of them.
+
+In terms of utility, I'm not convinced there is really any.  It's a kind of neat trick though, and its cute.
+* AppPAL lint
+** Redundancy
+*** TODO Bug with conditionals added to redundancy graph.
+
+See example =redundancy-4.policy=.
+
+#+BEGIN_SRC
+'x' says 'y' p
+  if A q.
+'x' says 'y' q.
+'x' says 'z' q
+  if 'p' q.
+#+END_SRC 
+
+The 'x' says 'p' q in the conditionals of the third assertion, gets unified with ='x' says A q= in the first.
+However this shouldn't happen as the policy is incomplete and there is no ='x' says 'p' q= to unify with.
+
+Probably just need to be a bit more careful when doing unification.
+(Which we already new).
+*** TODO Add the variable prefixing syntax
+
+='alice' says Cake:C isDelicious= -> ='alice' says C isDelicious if C isCake.=

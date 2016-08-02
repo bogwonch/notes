@@ -1,7 +1,7 @@
 * Amaretto Sour (sic)                                :amaretto:sour:cocktail:
 :PROPERTIES:
 :source: http://www.jeffreymorgenthaler.com/2012/i-make-the-best-amaretto-sour-in-the-world/
-:author: Jeffrey Morgethaler
+:author: Jeffrey Morgenthaler
 :END:
 
 [[./img/amaretto-sour.jpg]]

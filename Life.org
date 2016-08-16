@@ -22,11 +22,18 @@ CLOSED: [2016-07-27 Wed 13:33]
 
 
 That nice Spanish/Greek tapas place at 7pm.
-** TODO Meeting up with Siân
-DEADLINE: <2016-08-02 Sun>
+** DONE Meeting up with Siân
+CLOSED: [2016-08-16 Tue 12:19] DEADLINE: <2016-08-02 Sun>
 - Some time in next three weeks in Kent.
 - Doesn't have a spare room anymore.
 - Siân is a dick 
   
 - Probably 6-7 August, but to confirm once EB knows what she's doing.
+* TODO Book tickets to go up for Edinburgh Science festival
+<2016-10-15 Tue>
 
+Shouldn't be too onerous
+Using Lenka's apps
+May need to do some re-skinning
+
+Rachel to get in contact

@@ -1,4 +1,36 @@
-* Thesis
+* TODO Thesis
+** TODO Background
+*** TODO Android background
+*** TODO App Stores
+*** TODO Authorization logics
+** TODO AppPAL
+*** TODO Why SecPAL?
+*** TODO Instantiation
+*** TODO Typing
+*** TODO Linters
+Finding missing statements
+Finding redundancy
+Schema extraction and enforcement
+*** TODO Other extensions?
+Maybe introduce the plausability work here?
+It'd be nice to include!
+Knowledge distribution protocol
+** TODO Apps and App Stores
+*** TODO Users and Apps
+*** TODO Finding the right apps
+ESSoS 2016 paper
+*** TODO App stores
+Show the difference between different stores, modelled using AppPAL.
+*** TODO An AppPAL enhanced store
+The demos we did (repeatedly). 
+Show how we can generate custom stores based on rigorous policies.
+*** TODO Reasoning about policies
+**** Policies in the workplace
+Talk about what kinds of policies offices have, and how they could be modelled using apppal.
+**** Precisely comparing policies.
+BYOD work
+
+
 * Meetings
 ** TODO Meeting with David <2016-07-27 14:00 Wed>
 *** DONE Prep [6/6]
@@ -124,7 +156,9 @@ ones.
 
 **** DONE make sure that the code3pse policy is finished.
 CLOSED: [2016-07-26 Tue 13:06]
-**** TODO make sure that the edinburgh policy is finished.
+**** DONE make sure that the edinburgh policy is finished.
+CLOSED: [2016-08-02 Tue 11:52]
+**** 
 * AppPAL with Plausability
 
 There's a lot of work on having probabilistic logics, but not anything on applying them to authorization.
@@ -153,3 +187,6 @@ Probably just need to be a bit more careful when doing unification.
 *** TODO Add the variable prefixing syntax
 
 ='alice' says Cake:C isDelicious= -> ='alice' says C isDelicious if C isCake.=
+* TODO Third Year Report
+David has pointed out that it should actually be due in December, but has said write it now.
+Thats fine... we can use bits of it for the thesis. 

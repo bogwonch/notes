@@ -1,5 +1,7 @@
 * Academic Center of Excellence Application
 :LOGBOOK:
+CLOCK: [2016-08-18 Thu 15:02]--[2016-08-18 Thu 17:08] =>  2:06
+CLOCK: [2016-08-18 Thu 11:40]--[2016-08-18 Thu 13:58] =>  2:18
 CLOCK: [2016-08-16 Tue 12:50]--[2016-08-16 Tue 16:20] =>  3:30
 CLOCK: [2016-08-16 Tue 10:10]--[2016-08-16 Tue 11:40] =>  1:30
 :END:
@@ -10,3 +12,57 @@ Took notes about sources of funding.
 Jean gave me preliminary jobs
 *** PhD clean up
 Only interested in PhDs from Jan 2012--Dec 201
+** <2016-08-18 Thu> 
+*** DONE Split CVs into separate files
+CLOSED: [2016-08-18 Thu 12:42]
+*** DONE Write a little script to render the CVs
+CLOSED: [2016-08-18 Thu 13:31]
+*** TODO Tidy the CV code (remove DAs comments!)
+*** TODO Emailed Mahesh for info about Rajkarn Singh
+*** TODO Emailed Myrto for info about Nicolaos Labrou
+
+*** Data Solicitation 
+**** TODO Prof Mike Davies
+[[mailto://mike.davies@ed.ac.uk]]
+Sent <2016-08-18 Thu>
+
+**** TODO Prof Charles Raab
+[[mailto://c.d.raab@ed.ac.uk]]
+Sent <2016-08-18 Thu>
+
+**** TODO Prof Burkhard Schafer
+[[mailto://B.Schafer@ed.ac.uk]]
+Sent <2016-08-18 Thu>
+
+**** TODO Prof Harald Haas
+[[mailto://h.haas@ed.ac.uk]]
+Sent <2016-08-18 Thu>
+
+**** TODO Prof Chris Speed
+[[mailto://c.speed@ed.ac.uk]]
+Sent <2016-08-18 Thu>
+
+**** TODO Myrto Arapinis
+Sent <2016-08-18 Thu>
+
+**** TODO David Aspinall
+**** TODO Andy Gordon
+Sent <2016-08-18 Thu>
+**** TODO Elham Kashefi
+Sent <2016-08-18 Thu>
+**** TODO Aggelos Kiayias
+Will need special care as we don't have any information on him at the moment.
+Will send him David's as an example of what we're after
+Sent <2016-08-18 Thu>
+
+**** TODO Don Sannella
+Sent <2016-08-18 Thu>
+**** TODO James Cheney
+<2016-08-18 Thu>
+
+**** TODO Ian Stark
+Sent <2016-08-18 Thu>
+
+**** TODO Kami Vaniea
+Sent <2016-08-18 Thu>
+

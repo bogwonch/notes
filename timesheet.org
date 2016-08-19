@@ -2,6 +2,9 @@
 :LOGBOOK:
 CLOCK: [2016-08-18 Thu 15:02]--[2016-08-18 Thu 17:08] =>  2:06
 CLOCK: [2016-08-18 Thu 11:40]--[2016-08-18 Thu 13:58] =>  2:18
+CLOCK: [2016-08-17 Wed 17:01]--[2016-08-17 Wed 17:21] =>  0:20
+CLOCK: [2016-08-17 Wed 13:54]--[2016-08-17 Wed 15:54] =>  2:00
+CLOCK: [2016-08-17 Wed 10:51]--[2016-08-17 Wed 12:01] =>  1:10
 CLOCK: [2016-08-16 Tue 12:50]--[2016-08-16 Tue 16:20] =>  3:30
 CLOCK: [2016-08-16 Tue 10:10]--[2016-08-16 Tue 11:40] =>  1:30
 :END:
@@ -12,6 +15,61 @@ Took notes about sources of funding.
 Jean gave me preliminary jobs
 *** PhD clean up
 Only interested in PhDs from Jan 2012--Dec 201
+** <2016-08-17 Wed>
+*** TODO Fill in and check about PhDs that have completed
+- Suspect PhDs
+  - Valentin Radu (Mahesh)
+    - Emailed about
+  - Sergio Elizondo Gonzalez (Nigel Goddard)
+    - Still currently
+  - Herry Herry (Paul Anderson)
+    - Submitted in 2015
+
+**** TODO Theodoros Kapourniotis completed (supervisor Elham Kashefi)
+Emailed Elham for title and a link to it.
+Sent <2016-08-17 Wed> 
+**** DONE Add student of Mahesh who had the S&P paper
+CLOSED: [2016-08-17 Wed 17:13]
+Actual name: Galini Tsoukaneri
+Information to come with response
+
+*** DONE Reorder by reverse completion date (and reverse start date for uncompleted)
+CLOSED: [2016-08-17 Wed 14:47]
+
+*** Update PhDs for 2016
+
+Dear Professor Kiayias,
+
+I'm trying to sort out the list of PhD students for David Aspinall's Cyber Security ACE application.
+Do you have any new students starting in 2016 that I should add to the list?
+
+Many thanks,
+--
+Joseph Hallett
+
+**** TODO Ask Aggelos for new PhD students
+[[mailto://Aggelos.Kiayias@ed.ac.uk]]
+Sent <2016-08-17 Wed>
+**** TODO Ask Myrto for new PhD students
+[[mailto://marapini@inf.ed.ac.uk]]
+Sent <2016-08-17 Wed>
+**** TODO Ask Elham for new PhD students
+[[mailto://ekashefi@inf.ed.ac.uk]]
+Sent <2016-08-17 Wed>
+**** DONE Ask Don for new PhD students
+CLOSED: [2016-08-17 Wed 15:52]
+[[mailto://dts@inf.ed.ac.uk]]
+Sent: <2016-08-17 Wed>
+Response: <2016-08-17 Wed>
+
+Nope
+**** TODO Ask Ian for new PhD students
+[[mailto://Ian.Stark@ed.ac.uk]]
+Sent <2016-08-17 Wed>
+
+
+*** TODO Get response form Mahesh re: Galini and Valentin Radu
+[[mailto://mahesh@ed.ac.uk]]
 ** <2016-08-18 Thu> 
 *** DONE Split CVs into separate files
 CLOSED: [2016-08-18 Thu 12:42]
@@ -26,7 +84,8 @@ CLOSED: [2016-08-18 Thu 13:31]
 [[mailto://mike.davies@ed.ac.uk]]
 Sent <2016-08-18 Thu>
 
-**** TODO Prof Charles Raab
+**** DONE Prof Charles Raab
+CLOSED: [2016-08-19 Fri 10:36]
 [[mailto://c.d.raab@ed.ac.uk]]
 Sent <2016-08-18 Thu>
 
@@ -66,3 +125,6 @@ Sent <2016-08-18 Thu>
 **** TODO Kami Vaniea
 Sent <2016-08-18 Thu>
 
+
+Removed names from before the period.
+Updated PhDs to use new areas.

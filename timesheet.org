@@ -1,5 +1,7 @@
 * Academic Center of Excellence Application
 :LOGBOOK:
+CLOCK: [2016-08-23 Tue 13:03]--[2016-08-23 Tue 14:13] =>  1:10
+CLOCK: [2016-08-23 Tue 11:00]--[2016-08-23 Tue 12:20] =>  1:20
 CLOCK: [2016-08-18 Thu 15:02]--[2016-08-18 Thu 17:08] =>  2:06
 CLOCK: [2016-08-18 Thu 11:40]--[2016-08-18 Thu 13:58] =>  2:18
 CLOCK: [2016-08-17 Wed 17:01]--[2016-08-17 Wed 17:21] =>  0:20
@@ -53,6 +55,10 @@ Sent <2016-08-17 Wed>
 **** TODO Ask Myrto for new PhD students
 [[mailto://marapini@inf.ed.ac.uk]]
 Sent <2016-08-17 Wed>
+
+She has some but hasn't said what their subjects are.
+
+
 **** TODO Ask Elham for new PhD students
 [[mailto://ekashefi@inf.ed.ac.uk]]
 Sent <2016-08-17 Wed>
@@ -63,7 +69,8 @@ Sent: <2016-08-17 Wed>
 Response: <2016-08-17 Wed>
 
 Nope
-**** TODO Ask Ian for new PhD students
+**** DONE Ask Ian for new PhD students
+CLOSED: [2016-08-23 Tue 10:48]
 [[mailto://Ian.Stark@ed.ac.uk]]
 Sent <2016-08-17 Wed>
 
@@ -85,13 +92,15 @@ CLOSED: [2016-08-18 Thu 13:31]
 Sent <2016-08-18 Thu>
 
 **** DONE Prof Charles Raab
-CLOSED: [2016-08-19 Fri 10:36]
+CLOSED: [2016-08-23 Tue 12:16]
 [[mailto://c.d.raab@ed.ac.uk]]
 Sent <2016-08-18 Thu>
+Got response
 
-**** TODO Prof Burkhard Schafer
+**** Prof Burkhard Schafer
 [[mailto://B.Schafer@ed.ac.uk]]
 Sent <2016-08-18 Thu>
+Got response
 
 **** TODO Prof Harald Haas
 [[mailto://h.haas@ed.ac.uk]]
@@ -107,8 +116,11 @@ Sent <2016-08-18 Thu>
 **** TODO David Aspinall
 **** TODO Andy Gordon
 Sent <2016-08-18 Thu>
+Got response
+
 **** TODO Elham Kashefi
 Sent <2016-08-18 Thu>
+
 **** TODO Aggelos Kiayias
 Will need special care as we don't have any information on him at the moment.
 Will send him David's as an example of what we're after
@@ -116,8 +128,11 @@ Sent <2016-08-18 Thu>
 
 **** TODO Don Sannella
 Sent <2016-08-18 Thu>
-**** TODO James Cheney
+**** DONE James Cheney
+CLOSED: [2016-08-23 Tue 10:48]
 <2016-08-18 Thu>
+
+Won't fix. Jean to chase.
 
 **** TODO Ian Stark
 Sent <2016-08-18 Thu>
@@ -128,3 +143,6 @@ Sent <2016-08-18 Thu>
 
 Removed names from before the period.
 Updated PhDs to use new areas.
+
+** <2016-08-23 Tue>
+Added CVs from Schafer, Raab and Gordon.

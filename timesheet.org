@@ -9,6 +9,7 @@ CLOCK: [2016-09-01 Thu 10:40]--[2016-09-01 Thu 11:00] =>  0:20
 CLOCK: [2016-08-31 Wed 12:35]--[2016-08-31 Wed 15:33] =>  2:58
 CLOCK: [2016-08-31 Wed 10:03]--[2016-08-31 Wed 11:41] =>  1:38
 CLOCK: [2016-08-29 Mon 10:04]--[2016-08-29 Mon 10:28] =>  0:24
+CLOCK: [2016-08-24 Wed 11:10]--[2016-08-24 Wed 12:59] =>  1:49
 CLOCK: [2016-08-23 Tue 13:03]--[2016-08-23 Tue 14:13] =>  1:10
 CLOCK: [2016-08-23 Tue 11:00]--[2016-08-23 Tue 12:20] =>  1:20
 CLOCK: [2016-08-18 Thu 15:02]--[2016-08-18 Thu 17:08] =>  2:06
@@ -68,15 +69,12 @@ Many thanks,
 --
 Joseph Hallett
 
-**** TODO Ask Aggelos for new PhD students
-[[mailto://Aggelos.Kiayias@ed.ac.uk]]
-Sent <2016-08-17 Wed>
+
 **** TODO Ask Myrto for new PhD students
 [[mailto://marapini@inf.ed.ac.uk]]
 Sent <2016-08-17 Wed>
 
 She has some but hasn't said what their subjects are.
-
 
 **** TODO Ask Elham for new PhD students
 [[mailto://ekashefi@inf.ed.ac.uk]]
@@ -170,7 +168,7 @@ Sent <2016-08-18 Thu>
 
 
 Removed names from before the period.
-Updated PhDs to use new areas.
+Updated PhDs to use new ar eas.
 
 ** <2016-08-23 Tue>
 Added CVs from Schafer, Raab and Gordon.
@@ -359,3 +357,38 @@ Done it!
 *** TODO figure out why david can't build the doc properly
 which in practice means ditch their stupid build system.
  
+
+** <2016-08-24 Wed>
+
+Spoke to David:
+
+- *Really need to find tenth completed Phd Student in security*
+  - Okay well I'll get on with this now then!
+
+*** Additional completed PhDs
+
+**** Georgios Stefankis
+Characterizing and exploiting application behavior under data corruption
+
+[[https://www.era.lib.ed.ac.uk/handle/1842/11759]]
+
+Supervised by /Marcelo Cintra/ and /Vijay Nagaranjan/.
+
+Thesis was submitted for a /Master of Philosophy/ but has a PhD coverplate?
+
+
+
+*** TODO Ask Aggelos for new PhD students
+[[mailto://Aggelos.Kiayias@ed.ac.uk]]
+Sent <2016-08-17 Wed>
+Response <2016-08-24 Wed>
+
+He has three:
+
+- Georgios Panagiotakos
+- Yiannis Tselekounis
+- Aikaterini Stouka
+
+I've requested more information.
+
+

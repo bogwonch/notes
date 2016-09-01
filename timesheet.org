@@ -1,5 +1,9 @@
 * Academic Center of Excellence Application
 :LOGBOOK:
+CLOCK: [2016-09-01 Thu 10:40]--[2016-09-01 Thu 11:00] =>  0:20
+CLOCK: [2016-08-31 Wed 12:35]--[2016-08-31 Wed 15:33] =>  2:58
+CLOCK: [2016-08-31 Wed 10:03]--[2016-08-31 Wed 11:41] =>  1:38
+CLOCK: [2016-08-29 Mon 10:04]--[2016-08-29 Mon 10:28] =>  0:24
 CLOCK: [2016-08-23 Tue 13:03]--[2016-08-23 Tue 14:13] =>  1:10
 CLOCK: [2016-08-23 Tue 11:00]--[2016-08-23 Tue 12:20] =>  1:20
 CLOCK: [2016-08-18 Thu 15:02]--[2016-08-18 Thu 17:08] =>  2:06
@@ -9,6 +13,15 @@ CLOCK: [2016-08-17 Wed 13:54]--[2016-08-17 Wed 15:54] =>  2:00
 CLOCK: [2016-08-17 Wed 10:51]--[2016-08-17 Wed 12:01] =>  1:10
 CLOCK: [2016-08-16 Tue 12:50]--[2016-08-16 Tue 16:20] =>  3:30
 CLOCK: [2016-08-16 Tue 10:10]--[2016-08-16 Tue 11:40] =>  1:30
+#+BEGIN: clocktable :maxlevel 2 :scope subtree
+#+CAPTION: Clock summary at [2016-09-01 Thu 11:16]
+| Headline                         | Time    |
+|----------------------------------+---------|
+| *Total time*                     | *20:44* |
+|----------------------------------+---------|
+| Academic Center of Excellence... | 20:44   |
+#+END:
+
 :END:
 ** <2016-08-16 Tue>
 *** Meeting
@@ -18,7 +31,8 @@ Jean gave me preliminary jobs
 *** PhD clean up
 Only interested in PhDs from Jan 2012--Dec 201
 ** <2016-08-17 Wed>
-*** TODO Fill in and check about PhDs that have completed
+*** DONE Fill in and check about PhDs that have completed
+CLOSED: [2016-08-31 Wed 15:15]
 - Suspect PhDs
   - Valentin Radu (Mahesh)
     - Emailed about
@@ -82,12 +96,14 @@ Sent <2016-08-17 Wed>
 CLOSED: [2016-08-18 Thu 12:42]
 *** DONE Write a little script to render the CVs
 CLOSED: [2016-08-18 Thu 13:31]
-*** TODO Tidy the CV code (remove DAs comments!)
+*** DONE Tidy the CV code (remove DAs comments!)
+CLOSED: [2016-08-31 Wed 15:15]
 *** TODO Emailed Mahesh for info about Rajkarn Singh
 *** TODO Emailed Myrto for info about Nicolaos Labrou
 
 *** Data Solicitation 
-**** TODO Prof Mike Davies
+**** DONE Prof Mike Davies
+CLOSED: [2016-08-23 Tue 16:43]
 [[mailto://mike.davies@ed.ac.uk]]
 Sent <2016-08-18 Thu>
 
@@ -97,7 +113,8 @@ CLOSED: [2016-08-23 Tue 12:16]
 Sent <2016-08-18 Thu>
 Got response
 
-**** Prof Burkhard Schafer
+**** DONE Prof Burkhard Schafer
+CLOSED: [2016-08-23 Tue 16:43]
 [[mailto://B.Schafer@ed.ac.uk]]
 Sent <2016-08-18 Thu>
 Got response
@@ -106,15 +123,18 @@ Got response
 [[mailto://h.haas@ed.ac.uk]]
 Sent <2016-08-18 Thu>
 
-**** TODO Prof Chris Speed
+**** DONE Prof Chris Speed
+CLOSED: [2016-08-29 Mon 10:04]
 [[mailto://c.speed@ed.ac.uk]]
 Sent <2016-08-18 Thu>
 
 **** TODO Myrto Arapinis
 Sent <2016-08-18 Thu>
 
-**** TODO David Aspinall
-**** TODO Andy Gordon
+**** DONE David Aspinall
+CLOSED: [2016-08-29 Mon 10:04]
+**** DONE Andy Gordon
+CLOSED: [2016-08-31 Wed 15:15]
 Sent <2016-08-18 Thu>
 Got response
 
@@ -146,3 +166,37 @@ Updated PhDs to use new areas.
 
 ** <2016-08-23 Tue>
 Added CVs from Schafer, Raab and Gordon.
+... and Mike Davies
+
+** <2016-08-27 Sat>
+
+David asked me to:
+
+- Edit CVs down to two pages
+
+- Fix bibtex links in CVs
+
+- Add AppGuarden bibtexs
+
+** <2016-08-29 Mon> 
+Adding Chris Speed
+
+** <2016-08-31 Wed> 
+*** DONE Add AppGuarden BiBTeXs
+CLOSED: [2016-08-31 Wed 13:46]
+*** DONE Yianna Danidou
+CLOSED: [2016-08-31 Wed 14:41]
+Jean asked me to chase Burkhard Schafer for information about Yianna Danidou (PhD student).
+Got it.
+
+- Need to check the PhD was awarded by UoE
+  - Yes.
+
+*** TODO Edit CVs down to two pages
+
+Whose CV needs editing?
+
+- [ ] David Aspinall
+
+*** TODO Fix bibtex links in CVs
+

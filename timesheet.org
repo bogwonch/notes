@@ -1,5 +1,10 @@
 * Academic Center of Excellence Application
 :LOGBOOK:
+CLOCK: [2016-09-14 Wed 10:21]--[2016-09-14 Wed 10:31] =>  0:10
+CLOCK: [2016-09-13 Tue 12:51]--[2016-09-13 Tue 16:57] =>  4:06
+CLOCK: [2016-09-13 Tue 10:29]--[2016-09-13 Tue 12:05] =>  1:36
+CLOCK: [2016-09-06 Tue 12:37]--[2016-09-06 Tue 14:25] =>  1:48
+CLOCK: [2016-09-06 Tue 10:47]--[2016-09-06 Tue 11:42] =>  0:55
 CLOCK: [2016-09-01 Thu 10:40]--[2016-09-01 Thu 11:00] =>  0:20
 CLOCK: [2016-08-31 Wed 12:35]--[2016-08-31 Wed 15:33] =>  2:58
 CLOCK: [2016-08-31 Wed 10:03]--[2016-08-31 Wed 11:41] =>  1:38
@@ -14,12 +19,12 @@ CLOCK: [2016-08-17 Wed 10:51]--[2016-08-17 Wed 12:01] =>  1:10
 CLOCK: [2016-08-16 Tue 12:50]--[2016-08-16 Tue 16:20] =>  3:30
 CLOCK: [2016-08-16 Tue 10:10]--[2016-08-16 Tue 11:40] =>  1:30
 #+BEGIN: clocktable :maxlevel 2 :scope subtree
-#+CAPTION: Clock summary at [2016-09-01 Thu 11:16]
-| Headline                         | Time    |
-|----------------------------------+---------|
-| *Total time*                     | *20:44* |
-|----------------------------------+---------|
-| Academic Center of Excellence... | 20:44   |
+#+CAPTION: Clock summary at [2016-09-14 Wed 10:31]
+| Headline                         | Time      |
+|----------------------------------+-----------|
+| *Total time*                     | *1d 5:19* |
+|----------------------------------+-----------|
+| Academic Center of Excellence... | 1d 5:19   |
 #+END:
 
 :END:
@@ -146,6 +151,9 @@ Will need special care as we don't have any information on him at the moment.
 Will send him David's as an example of what we're after
 Sent <2016-08-18 Thu>
 
+He responded on <2016-09-04 Sun>.
+He will do it soon but just wants to send plain text.
+
 **** TODO Don Sannella
 Sent <2016-08-18 Thu>
 **** DONE James Cheney
@@ -192,11 +200,162 @@ Got it.
 - Need to check the PhD was awarded by UoE
   - Yes.
 
-*** TODO Edit CVs down to two pages
+*** DONE Edit CVs down to two pages
+CLOSED: [2016-09-06 Tue 10:40]
 
 Whose CV needs editing?
 
 - [ ] David Aspinall
 
+Only davids needs editing
 *** TODO Fix bibtex links in CVs
+**** 
 
+
+** <2016-09-06 Tue>
+
+*** Jean's Email
+
+
+#+BEGIN_QUOTE
+I've talked to David, and he's happy for me to define the process the way that
+makes sense to me (which is somewhat different from his view, I think) and
+clarify the steps.
+
+The area list in the call is a mess. With my knowledge of the evaluation
+criteria, I am currently working through the areas to look at what we could
+claim in each, as well as how to deal with people and things we think are
+important that aren't in the area list. I will facilitate a discussion in the
+week of 12 or 19 September in which we will make decisions for the choices we
+have. Until then, it doesn't make sense for you to spend any time trying to
+categorize anything. For now, where something has an area assigned (even if it's
+one of the old areas) you can leave it, but don't worry about assigning areas.
+
+Please read the call if you haven't done so, concentrating not on the areas, but
+on the technical requirements (10+10 students and a project list, but they
+needn't be of the core staff; for core staff, tailored CV with publications
+list, up to 4 explained publications, and so on). Our priority is to make sure
+we have all of the information collated for us to make these decisions about who
+is core, who represents new growth that will be important to our Centre in 5
+years time, and who are helpful context for the Centre - with old information
+culled. It's better for potential relevant things to be in the document in some
+form, in time for the meeting, than omitted. We do not need access to pre-2012
+information in the document because we can go to the old submission for that.
+
+Create a document (text or spreadsheet) for bouncing things to me if they become
+sticking points. I won't deal with these next week but it will be handy to have
+them as a list in what's effectively a bug tracker.
+
+Remove out of date projects from the project list.
+
+We have already identified most if not all of the completed PhD students we will
+find, and most of the in progress students. Please make sure that the fields for
+each are complete (apart from area) and match the requirements, paying
+particular attention to making clear and simple text for the relevance. Remove
+all that are out of the census period. Under uncertainty (for instance, you
+can't understand the relevance or aren't sure if the student qualifies), mark
+with "FIXME-CHECK", and contact the supervisor to ask if you haven't recently.
+
+You have already contacted everyone we think is potentially core staff. It is
+still a matter of contention whether core staff must have four publications to
+list; David thinks yes, I think in some strategic cases, possibly not.
+Prioritize work on those that do, but do not automatically eliminate those that
+don't. As their returns come in, ensure their CVs end up in the draft
+application (or are updated if they were also in before) and their relevant
+current projects go on the projects list. If they have given you relevant
+papers, ensure those are also in and write what you can about significance and
+impact. Also check whether the CV is suitably tailored, and fix it if you can.
+Where this is very unclear, we can go back to them about it, but it's best for
+us to get through the discussion first before we do this. FIXME is useful for
+marking omissions/unclear things. Find or check paper links are actually
+accessible, project values are Edinburgh-only, and query any problems.
+
+Last priority is finding the bibtex entries from Edinburgh Research Explorer
+(and fixing them where they are incomplete). Unless you run out of work, it is
+most efficient to wait until after the discussion, because some of the papers
+(and staff) could be shifted to non-core.
+
+I hope this is clearer for you. I expect to be sporadically on email next week
+and would prefer to be contacted rather than you get stuck. In case my access is
+poor, please signal any need for less than 24 hour turn-around by texting
+07486977951 telling me to check my email or suggesting a quick skype
+(jcarletta).
+#+END_QUOTE
+
+**** DONE Re-read call focusing on technical requirements.
+CLOSED: [2016-09-06 Tue 12:32]
+
+1. ‘Institution’s Letter of Support for Application’ (up to one side of A4)
+2. ‘Case for Recognition’, which should include details of the research environment, vision and strategy (up to three sides of A4 in total) plus a knowledge domains matrix (described below)
+3. ‘Track Record and Esteem Indicators of Members of Staff’ (no more than two sides of A4 per CV, combined into a single document)
+4. ‘Notable Publications’ (no more than one side of A4 per member of staff, combined into a single document which contains accessible web links to publications)
+5. ‘Doctoral Level Students Programme’ (page limit not specified though there is a general requirement for brevity)
+6. ‘External Research Funding and Impact of Projects’ (up to three sides of A4 in total)
+
+***** Track Record and Esteem Indicators of Members of Staff
+
+Please provide a CV for each of the members of staff named in section 2b of the
+application. The CV should clearly describe academic and other relevant
+experience, current role, the contribution made to cyber security research
+within your organisation, and a list of key relevant publications. The CV should
+also contain any relevant esteem indicators such as: journal editorship,
+programme committee membership, invited talks, membership of working groups or
+advisory groups, and Fellowship of professional bodies or learned societies.
+
+***** Criteria to be applied>
+The CVs should clearly demonstrate that named staff have a proven track record and depth of experience in cyber security research and that this is recognised by the research community at large. Each CV should be consistent with the research matrix shown in the ‘Case for recognition’. Our experience in earlier calls is that off-the-shelf CVs are not likely to be suitable and that some customisation and standardisation in order to draw out the areas relevant to this call will be beneficial. Similarly, the number of items included in the CV is less germane to the assessment process than their relevance and quality.
+
+**** TODO Create document for Jean to use as a bug tracker
+(Why can't we use an actual bug tracker?)
+
+**** DONE Remove out of date projects from the project list
+CLOSED: [2016-09-06 Tue 14:01]
+
+Not sure about the /focussed/ projects, but projects from the list are gone now
+
+**** TODO Make sure all the PhD fields are complete
+- Make sure relevance is clear and succinct
+- Remove out of date ones (done)
+- Email their supervisor if I'm unsure of their relevance
+
+**** TODO Make sure core staff have CV in and 4 publications
+Edit CV as required
+
+**** TODO Update staffs project lists
+
+**** TODO [#C] Fix BiBTeXs 
+
+
+
+
+**** DONE List for David of all the PhDs
+CLOSED: [2016-09-13 Tue 10:30]
+#{x}
+
+** <2016-09-13 Tue>
+
+*** DONE Removed out of scope academics from pubs
+  CLOSED: [2016-09-13 Tue 11:20]
+*** DONE Updating James Cheney's publications
+  CLOSED: [2016-09-13 Tue 15:46]
+
+
+
+*** DONE Added James Cheney's grant
+  CLOSED: [2016-09-13 Tue 16:51]
+
+*** DONE Added Charles Raab's project (with Robin Williams) and updated his pubs
+  CLOSED: [2016-09-13 Tue 16:52]
+
+*** Emailed Jean questions
+  *** Is AFOSR air force..?
+  *** Should i convert USD projects to GBP
+  *** Are we only interested in projects with a PI?
+
+** <2016-09-14 Wed> 
+David asked me to sort out his table
+Done it!
+
+*** TODO figure out why david can't build the doc properly
+which in practice means ditch their stupid build system.
+ 

@@ -1,0 +1,122 @@
+* Datalog
+** Equivalence, Query-Reachability and Satisfiability in Datalog Extensions
+They show that both satisfiability and query-reachability are decidable for
+Datalog programs with dense-order constraints and safe startified negation
+provided that:
+
+1. negation is applied only to EDB predicates, or
+2. all EDB predicates are unary.
+
+*** Definitions
+**** Satisfiability
+#+BEGIN_QUOTE
+An IDB predicate s of a program P is /satisfiable/ if there is some
+EDB D, such that P defines a nonempty relation for s.
+#+END_QUOTE
+
+**** Query Reachability
+#+BEGIN_QUOTE
+Consider an atom q(a₁, ..., aₙ) where q is either and EDB or IDB
+predicate  and each aᵢ is either a variable or a constant. The atom
+q(a₁, ..., aₙ) is /query-reachable/ with respect to a program p if
+for some EDB D, there is a derivation tree d of a fact for the query
+predicate p such that the derivation tree d has a positive ground
+atom that matches q(a₁, ..., aₙ).
+#+END_QUOTE
+
+**** Containment and Equivalence
+#+BEGIN_QUOTE
+A program P₁ is /contained/ in a program P₂, written P₁ ⊆ P₂ if for
+all EDBs D, P₁(D) ⊆ P₂(D). Pragrams P₁ and P₂ and /equivalent/,
+written P₁ ≡ P₂ if P₁ ⊆ P₂ and P₂ ⊆ P₁
+#+END QUOTE
+
+
+
+
+
+*** BiBTeX
+
+#+BEGIN_SRC bibtex
+@inproceedings{Levy:1993:EQS:153850.153860,
+ author = {Levy, Alon and Mumick, Inderpal Singh and Sagiv, Yehoshua and Shmueli, Oded},
+ title = {Equivalence, Query-reachability and Satisfiability in Datalog Extensions},
+ booktitle = {Proceedings of the Twelfth ACM SIGACT-SIGMOD-SIGART Symposium on Principles of Database Systems},
+ series = {PODS '93},
+ year = {1993},
+ isbn = {0-89791-593-3},
+ location = {Washington, D.C., USA},
+ pages = {109--122},
+ numpages = {14},
+ url = {http://doi.acm.org/10.1145/153850.153860},
+ doi = {10.1145/153850.153860},
+ acmid = {153860},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+} 
+#+END_SRC
+
+** Discovery of frequent Datalog patterns
+
+They define a new Datalog evaluation algorithm called /Warmr/.
+Warmer evaluates /Wrmode/ programs, which is Datalog with two changes:
+
+1. Variables must be typed as either *input-only*, *output-only*, or
+   *input-and-output* query.
+2. All atoms should specify and depend on a key atom whose arguments are
+   output-only only.
+
+They show a number of algorithms from other sources and show how /warmr/ can
+pick between them in a configurable way.
+
+** Constraints and Redundancy in Datalog
+
+Two types of redundancy:
+
+- Unreachability
+  - If a predicate does not take part in any derivation tree of a fact for the
+    query predicate it can be eliminated.
+- Irrelevance
+  - No derivation tree should ever contain a pair of identical atoms
+    - NB: this is the redundancy checker I implemented.
+
+
+
+Definitions
+
+- The /extensional predicates/ (EDB predicates) which are those that appear only
+  in bodies of rules, and the /intentional predicates/ (IDB predicates) which are
+  the predicates appearing in heads of rules. The EDB predicates refer to the
+  database relations, while the IDB predicates are defined by the program. An
+  /extensional databas/e (EDB) consists of a set of ground atomic facts for the
+  EDB predicates.
+- A rule /r/ of a datalog program is /unreachable/ if there is no EDB, such that
+  /r/ appears in some derivation tree for the query predicate.
+- A derivation tree is minimal (or non-redundant) if there are no two identical
+  goal-nodes in the tree, such that one is an ancestor of the other.
+- A rule /r/ is /irrelevant/ in a given program if for all EDBs, /r/ is never used in
+  any minimal derivation for the query predicate.
+
+
+*** Algorithm for finding irrelevance
+
+Build the rule-goal tree for a given goal by applying all the rules relevant to
+the goal and then doing the same for all the children of the rules, until you
+are just left with goals from the EDB.  If goals appear multiple times then there
+is some irrelevance.
+
+A loop in the goal tree will cause the algorithm not to terminate, so a loop
+counter should be used so that the algorithm stops after a number of iterations.
+
+This is basically the same as the AppPAL redundancy checker, but I do an
+additional flattening operation so I can treat it as sets of goals rather than
+by recursing through a tree.  I also don't have to worry about loops as I can't
+flatten these and ignore them instead.  Expanding /n/ times might let me get a
+better result?
+
+** Decidability and Expressiveness Aspects of Logic Queries
+This is the paper that everyone cites to say that redundancy checking is undecidable.
+
+** Equivalence of Datalog Queries is Undecidable
+Talks about a variant Datalog^f.
+Datalog^C is satisfiable but 

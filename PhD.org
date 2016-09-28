@@ -190,3 +190,6 @@ Probably just need to be a bit more careful when doing unification.
 * TODO Third Year Report
 David has pointed out that it should actually be due in December, but has said write it now.
 Thats fine... we can use bits of it for the thesis. 
+ tn
+
+

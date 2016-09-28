@@ -37,3 +37,24 @@ Using Lenka's apps
 May need to do some re-skinning
 
 Rachel to get in contact
+* PhD note
+
+Get rid of the plausability stuff.
+Cut out details, but keep the text and future directions.
+
+Give a chapter by chapter by plan and a schedule.
+
+Survey article on optimization of datalog policies.
+Show awareness.
+
+Have a look for prolog notions of redundancy and bring back to whats going on here
+
+Miss out the problematic examples, unless i can prove them correct (try).
+Skip the listings, say what is happening.
+
+Explain what every damn term is.
+Assume people are idiots.
+Sharpen it up.
+
+
+|>the cat sat 

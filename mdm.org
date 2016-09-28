@@ -1,0 +1,133 @@
+
+- [[http://enterpriseios.com/wiki/Comparison_MDM_Providers][Comparison of MDM Providers]]
+  - A good source of information about different MDM software.
+  - Seems a little dated but a good first start
+
+- [[https://www.gartner.com/doc/reprints?id=1-391HFY8&ct=160608&st=sb][Report on MDM vendors they all seem to cite]]
+  - [[./gartner-magic-quadrant.png]]
+    - Everyone is either a /Leader/, /Visionary/ or /Niche Player/.
+    - Some interesting material that explains basic terms, but a *lot* of gobbledygook.
+
+* Mobile Device Management for Office 365
+
+[[https://support.office.com/en-us/article/Capabilities-of-built-in-Mobile-Device-Management-for-Office-365-a1da44e5-7475-4992-be91-9ccec25905b0?ui=en-US&rs=en-US&ad=US][Source]]
+
+- Microsoft's MDM software
+- Supports Android 4+, iOS 7+ and Windows and Windows Phone
+
+- Access Control for Office 365 documents
+  - Can require encryption, certain security settings, test for jailbroken devices, and check for a managed email profile.
+  - Policies limited to simple box ticking
+    - i.e. block screen capture can be on or off
+
+- Remote wipe capability
+
+* Microsoft Intune
+
+[[https://www.microsoft.com/en-us/cloud-platform/microsoft-intune][Source]]
+
+A more advanced version of [[Mobile Device Management for Office 365]] which provides /Mobile Application Management/.
+Designed to run in Microsoft's apps, and avoid users having to install provisioning profiles (which they dislike).o
+
+** Policy CSP
+
+[[https://msdn.microsoft.com/library/windows/hardware/dn904962(v=vs.85).aspx][Source]]
+
+- Uses the same same policy language as Windows 10.
+- But still essentially a box-ticking system
+  - Fields can have values but no real delegation or declarative policies for who can update them.
+
+* MobileIron
+
+- Have a [[https://www.mobileiron.com/en/video/visual-privacy][Visual Privacy]] feature to alert user's what the MDM software can or cannot do.
+  - Very similar to Android's old permission notifications
+
+- Seems to be primarily focused on provisioning every aspect of a device (i.e. email, VPN, office)
+
+- Policies are configured on top of MobileIron Core
+  - [[https://www.mobileiron.com/en/resources/faq#policies-and-how-to-use][Policies can be applied.]] (???)
+
+  - Policies can select apps, and configure them seemingly through App Wrapping
+    - [[https://www.mobileiron.com/en/products/appconnect][Source]]
+    - Some network configuration (per app VPNs/Tunnelling)
+    - Some web app configuration via PhoneGap
+    - Some security controls
+  
+  - They don't say it explicitly, but it seems this is all tick-box stuff again.
+
+      
+* Amtel NetPlus>>>Mobility
+
+- Got a certificate error on accessing their website.
+- Looks dead 
+  - last twitter post April 2015
+  - website updated in 2014?
+
+[[http://www.amtelnet.com/solutions/mobile-security/byod-security/][Source]]
+
+- Download links don't work on their website
+- Some usual tick box security things
+- Location based security
+  - Allows policy to only be enforced in geofenced area
+
+[[http://www.amtelnet.com/solutions/mobile-security/mobile-apps-management/][Source]]
+
+- Some app management features, wrapping the device's app store
+- Enterprise app store
+  - Apps with access control policies
+  - Black/White lists of public apps
+* Citrix XenMobile
+
+[[https://www.citrix.com/products/xenmobile/compare.html][Source]]
+
+Can't really see what it does, but it looks like a provisioning tool.
+
+[[https://www.citrix.com/content/dam/citrix/en_us/documents/products-solutions/xenapp-xnedesktop-and-xenmobile-integration-for-a-comprehensive-mobility-solution.pdf][Source]]
+
+- Mostly just app installation
+- Enterprise app store (but looks like you pick the apps).
+- Per-app dedicated micro-VPN for data separation
+  - App wrapping then?
+ 
+
+* IBM MaaS360
+
+- They *really* want you to be able to chat directly with them.
+  - Fine let's chat with Keith!
+
+  - Keith is unusually helpful.
+    - Is going to ask engineers for more information about their policies and semantics
+    - Mostly this is something for companies to just install and run.
+      - They might let you have the code to build something on top of this, but that'd be an unusual exception.
+
+    - Chief competitors are [[MobileIron]] and [[VMware AirWatch]].
+      - Most products are much of a muchness, but there may be some small vendors doing more advanced things.
+      - At the moment limited by how much access manufacturers like Samsung give them.
+      - Market is completely flooded.
+
+[[http://www-03.ibm.com/software/products/en/maas360-mobile-application-management][Source]]
+
+- Has a curated app store
+  - Looks like a store for IBM apps and some selected ones?
+  - Keith confirms white and black list only
+  - Pre-canned policies
+
+- Some monioring as well, and configuration management.  
+- Can do containerization.
+
+- Keith confirms, not capable of declarative policies.
+ 
+* VMware AirWatch
+
+[[http://www.air-watch.com/solutions/bring-your-own-device-byod/][Source]]
+
+- Can run only on certain configurable devices (white/black list)
+- Configuration and enterprise login.
+- Can customize Terms of Use based on whose device you're provisioning.
+- Remote wipe, and can delete certain apps on an employees departure
+
+- Can separate employee and personal data, with containers.
+- Some form of /compliance engine/ that monitors the devices for violations and locks the user out if they're detected
+  - Video seems to suggest it can tell the user what they need to do to get back to being compliant.
+
+  

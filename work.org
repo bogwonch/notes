@@ -1,0 +1,20 @@
+* Calendar
+** TODO Incorporate David's feedback into third year report         :3yr:phd:
+SCHEDULED: <2016-09-16 Fri>
+
+** TODO Add Kami's student to ACE                                       :ace:
+SCHEDULED: <2016-09-20 Tue>
+** TODO Sort out Myrto's stuff from ACE                                 :ace:
+SCHEDULED: <2016-09-20 Tue>
+** TODO Figure out dates for a visit                                   :phd:
+SCHEDULED: <2016-09-19 Mon>
+David suggests Data Science Research day on the <2016-10-12 Wed>
+Where is the group calendar?
+*** TODO Respond to wei
+** DONE Make notes on state of the art of MDM                          :phd:
+CLOSED: [2016-09-19 Mon 10:45] SCHEDULED: <2016-09-16 Fri>
+* To-do
+** TODO Chase Raquel re: October Science Festival thing                :esf:
+* Ideas
+
+* Done

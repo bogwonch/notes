@@ -1,0 +1,206 @@
+* Problems last time
+- Criteria failed on last time was focus by University, and not focussed enough PhDs.
+  - Limiting to Informatics this time.
+  - Others included as asides but not core members.
+    - May need bolstering with grant money and PhDs.
+  - Aggelos has two grants
+    - Horizon 2020 Panoramics
+      - 9 partner coordination
+      - 4M overall with 0.5M for Edinburgh
+    - Starting September Obstain
+      - Joint work with Chris Speed (PI)
+      - And someone from the business school
+      - and some externals (a Newcastle HCI lecturer)
+      - David has details
+      - ~1M
+    - No PhDs graduating from Edinburgh (but some from Athens)
+      - One in three years, but won't count
+      - Send project titles of Athens ones (3-4) to Jean
+      - People who've started AT December will count
+      - Jean and me(?) to chase
+* How do we position ourselves?
+- WRT knowledge domains
+- Have changed since earlier in the year
+  - With funding climate
+- Chris Speed might help with IoT
+  - But outside of Informatics
+  - Aggelos's project with Chris isn't really IoT unless you *really* squint
+  - David says we're /likely/ to want to bring in Chris Speed
+    - Jean says reviewers may discount Chris as it's design instead of security
+    - Jean says maybe include Mike Davis may look stronger
+    - David says maybe Charles Raab in law
+- Need some narrative that makes us seem "an integrated and cohesive group"
+  - David has a six bubble diagram(?)
+    - No dedicated systems security person
+      - but a lot of people working in the area
+      - could make an area we want to grow
+    - Mobile security
+      - focus of LFCS
+    - Deployment
+      - Data security
+      - Human factors
+        - Links to Turing institude and FAR institute
+        - Some collaboration with Machine Learning (Charles Sutton)
+    - Aggelos will send comments over email, but seems to make sense
+      - Would be good to back up with specific research and projects
+      - Papers have to be by full-time staff members
+        - Jean to have a look for Adria Gascon
+      - Jean to send Aggelos anything
+    - Jean says maybe include Harold Haas (design school)
+      - Included last time
+      - Maybe ask GCHQ?
+      - Systems engineering and design have good links, but Informatics not good at talking to them.
+    - There is a list of 9 people
+      - 8 are LFCS
+      - Don says what about Myingin(?)
+        - David says not actually security
+      - James says we have lots of people who can write a paragraph but not lots who have done in depth work
+        - Same problem with PhDs, lots contributing in security but not actually *in* security.
+      - We're short of PhDs (and were last year)
+        - Especially /completed/.
+          - Have 7, need 10.
+      - Joseph to write new version
+        - Probably about 45 pages some recycled
+        - I will be writing links to security in Applications/PhDs
+          - Try writing my own!
+        - Provide a matrix with indexes
+          - Tick boxes with which area they're working in
+      - GCHQ don't believe in social concerns, but EPSRC do!
+        - Kami seems problematic, but GCHQ know and like her and she *should* be included
+          - And she has publications
+        - Added privacy in society last time with Charles Raab
+          - Does he even have a position now?
+        - Berghardt Schafer
+          - Aggelos doing something here
+            - Also with Robin Williams
+            - No joint publications
+              - David says evidence with Robin is poor
+          - David says would be good if we had a publication here
+    - Jean: could make an argument about future growth in areas
+      - David: if we don't get the funding we don't do the work so a bit fake to list it
+  - What money does James have
+    - MS studentship Collin Anderson
+      - Not confident she's on schedule
+      - Wei Li Fu(?)
+    - JSLR continuing funding?
+      - Mostly theory?
+      - Not great number of publications so far
+      - EORD?
+    - Grant with DARPA and other US people
+      - Monitoring logs
+      - System inspection for provenance
+      - 700K till 2019 unless DARPA pulls the plug
+  - Connections to Gallois
+
+* Meeting early September 
+(but Jean out of town first week)
+David likely to be swamped with new personal tutees second week
+
+* TODO Update the projects
+- First cut of the updated list of projects
+  - How healthy is it?
+  - in Projects.tex
+    - Remove things which are out, but keep AppGuarden
+  - Talk with Jean about cutting researchers
+
+Allocate a couple of days to work out the people we're going to include
+Talk to Jean.
+
+- We're not quite aware what we want to ask people yet
+- Equipment?
+  - Eye tracking lab Kami may use
+  - Design lab Kami tried to use
+  - New building may provide opportunities for collaboration
+- Privacy may distract from the narrative
+  - New chair in algorithms
+    - May be a privacy great person 
+    - But we don't know if hes coming yet
+      - He has been deliberating for some months
+        - Brexit has been putting him off
+  - Privacy and security have been studied together historically
+  - May link up to human factors
+
+- Add an additional section about human factors
+
+- Jean to build the matrix
+- Me to figure about what sections people are in
+- Hard to figure out what someone's PhD or abstract are
+- First step is to cull!
+  - Me to cull PhDs and funding
+  - [[http://gow.epsrc.ac.uk/PersonSearch.aspx][Search for people's EPSRC funding]]
+  - EU funding harder to get
+    - May have to get from portfolio managers in Informatics
+
+    - May be listed on PURE.
+      - [[http://www.research.ed.ac.uk/portal/][Edinburgh Research Explorer]]
+      - PIM may help
+        - Portfolio management
+
+  - Update 6.1 table from previous document
+
+  - Maybe scrap PhDs
+    - PhDs who are out of cut off period
+    - Try and work out how many we have
+    - Try and make tight connections to the categories GCHQ have listed
+   
+  - Do PhDs first
+    - Delete the ones that are definitely falling off
+    - Comment out the questionable ones
+
+- Other big task is re-drafting the staff CVs
+  - We got them to write them and we redrafted
+  - We should ask for them soon!
+- Jean to get core-staff to send CV updates to me
+  - Maybe I send email and old ones and sections from old application from updates
+  - Everyone likes Bibtex in informatics
+- Outreach may not be helpful
+  - GCHQ seem to care
+  - CESG going to be spun out into Royal Society group
+    - [[https://royalsociety.org/topics-policy/projects/cybersecurity-research/][Links to report]]
+
+- Don't use Git properly!
+  - No branches
+  - Lots of folders!
+  - Names and dates!
+    - :-|
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,25 @@
+* Citrus
+
+- True Species
+  - Pomelo (maxima)
+  - Citron (medica)
+  - Papeda (micrantha)
+  - Reticulata (mandarin)
+
+- Hybrids
+  - Key Lime
+  - Bitter Orange
+  - Persian Lime
+  - Lemon (x limon) (maxima + medica)
+  - Rangpur
+  - Grapefruit (x paradisi) (maxima + x sinesis)
+  - Sweet Orange (x sinesis) (maxima + reticulata)
+  - Tangerine
+ 
+
+#+BEGIN_SRC dot 
+digraph 
+#+END_SRC
+
+
+

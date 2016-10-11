@@ -367,7 +367,7 @@ Spoke to David:
 
 *** Additional completed PhDs
 
-**** Georgios Stefankis
+**** NO - Georgios Stefankis 
 Characterizing and exploiting application behavior under data corruption
 
 [[https://www.era.lib.ed.ac.uk/handle/1842/11759]]
@@ -375,6 +375,8 @@ Characterizing and exploiting application behavior under data corruption
 Supervised by /Marcelo Cintra/ and /Vijay Nagaranjan/.
 
 Thesis was submitted for a /Master of Philosophy/ but has a PhD coverplate?
+
+-> Not a PhD the guy failed, and was given a masters.
 
 
 

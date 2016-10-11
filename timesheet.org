@@ -173,6 +173,41 @@ Updated PhDs to use new ar eas.
 ** <2016-08-23 Tue>
 Added CVs from Schafer, Raab and Gordon.
 ... and Mike Davies
+ 
+** <2016-08-24 Wed>
+
+Spoke to David:
+
+- *Really need to find tenth completed Phd Student in security*
+  - Okay well I'll get on with this now then!
+
+*** Additional completed PhDs
+
+**** NO - Georgios Stefankis 
+Characterizing and exploiting application behavior under data corruption
+
+[[https://www.era.lib.ed.ac.uk/handle/1842/11759]]
+
+Supervised by /Marcelo Cintra/ and /Vijay Nagaranjan/.
+
+Thesis was submitted for a /Master of Philosophy/ but has a PhD coverplate?
+
+-> Not a PhD the guy failed, and was given a masters.
+
+
+
+*** TODO Ask Aggelos for new PhD students
+[[mailto://Aggelos.Kiayias@ed.ac.uk]]
+Sent <2016-08-17 Wed>
+Response <2016-08-24 Wed>
+
+He has three:
+
+- Georgios Panagiotakos
+- Yiannis Tselekounis
+- Aikaterini Stouka
+
+I've requested more information.
 
 ** <2016-08-27 Sat>
 
@@ -208,8 +243,6 @@ Whose CV needs editing?
 Only davids needs editing
 *** TODO Fix bibtex links in CVs
 **** 
-
-
 ** <2016-09-06 Tue>
 
 *** Jean's Email
@@ -329,7 +362,6 @@ Edit CV as required
 **** DONE List for David of all the PhDs
 CLOSED: [2016-09-13 Tue 10:30]
 #{x}
-
 ** <2016-09-13 Tue>
 
 *** DONE Removed out of scope academics from pubs
@@ -349,48 +381,11 @@ CLOSED: [2016-09-13 Tue 10:30]
   *** Is AFOSR air force..?
   *** Should i convert USD projects to GBP
   *** Are we only interested in projects with a PI?
-
 ** <2016-09-14 Wed> 
 David asked me to sort out his table
 Done it!
 
 *** TODO figure out why david can't build the doc properly
 which in practice means ditch their stupid build system.
- 
-
-** <2016-08-24 Wed>
-
-Spoke to David:
-
-- *Really need to find tenth completed Phd Student in security*
-  - Okay well I'll get on with this now then!
-
-*** Additional completed PhDs
-
-**** NO - Georgios Stefankis 
-Characterizing and exploiting application behavior under data corruption
-
-[[https://www.era.lib.ed.ac.uk/handle/1842/11759]]
-
-Supervised by /Marcelo Cintra/ and /Vijay Nagaranjan/.
-
-Thesis was submitted for a /Master of Philosophy/ but has a PhD coverplate?
-
--> Not a PhD the guy failed, and was given a masters.
-
-
-
-*** TODO Ask Aggelos for new PhD students
-[[mailto://Aggelos.Kiayias@ed.ac.uk]]
-Sent <2016-08-17 Wed>
-Response <2016-08-24 Wed>
-
-He has three:
-
-- Georgios Panagiotakos
-- Yiannis Tselekounis
-- Aikaterini Stouka
-
-I've requested more information.
 
 

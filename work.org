@@ -1,20 +1,87 @@
 * Calendar
-** TODO Incorporate David's feedback into third year report         :3yr:phd:
-SCHEDULED: <2016-09-16 Fri>
+** DONE Add Ratnarajah's grants                                       :ace:
+CLOSED: [2016-10-07 Fri 11:57] SCHEDULED: <2016-10-07 Fri>
+** DONE Solicit Tharm Ratnarajah                                       :ace:
+CLOSED: [2016-10-07 Fri 11:28] SCHEDULED: <2016-10-07 Fri>
+** DONE Add Harald Haas's response                                     :ace:
+CLOSED: [2016-10-07 Fri 12:08] SCHEDULED: <2016-10-07 Fri>
 
-** TODO Add Kami's student to ACE                                       :ace:
-SCHEDULED: <2016-09-20 Tue>
-** TODO Sort out Myrto's stuff from ACE                                 :ace:
-SCHEDULED: <2016-09-20 Tue>
-** TODO Figure out dates for a visit                                   :phd:
-SCHEDULED: <2016-09-19 Mon>
-David suggests Data Science Research day on the <2016-10-12 Wed>
-Where is the group calendar?
-*** TODO Respond to wei
-** DONE Make notes on state of the art of MDM                          :phd:
-CLOSED: [2016-09-19 Mon 10:45] SCHEDULED: <2016-09-16 Fri>
+Jean doesn't want it.
+
+** DONE Incorporate Mahesh's grants                                    :ace:
+CLOSED: [2016-10-07 Fri 12:10] SCHEDULED: <2016-10-07 Fri>
+
+He hasn't listed any.
+** DONE Add Myrto's new grant                                          :ace:
+CLOSED: [2016-10-07 Fri 12:07] SCHEDULED: <2016-10-07 Fri>
+
+No known start date.  Can't add.
+** DONE Add Kami's student to ACE                                      :ace:
+CLOSED: [2016-10-07 Fri 12:07] SCHEDULED: <2016-10-07 Fri>
+
+Out of survey period (2017)
+
+** DONE Write single slide 3m talk for Security Glimpses               :phd:
+CLOSED: [2016-10-04 Tue 11:06]
+
+** DONE Practice talk for Security Glimpses
+CLOSED: [2016-10-07 Fri 10:54] SCHEDULED: <2016-10-05 Wed>
+
+In the past you might have had one phone for work and one for home.
+But thats not true anymore. 
+In the medical field around 85% of doctors use their personal devices to look up patient sensitive data.  
+75% companies have a BYOD scheme.
+
+This causes something of a security problem for IT departments.
+They don’t control employees personal devices to the same degree as corporate ones.
+As a solution the companies publish rules like the ones behind me.
+Its taken from a SANS guide to writing BYOD policies.   
+Just two paragraphs from a fifty page-ish document.
+They’re not all this long, Edinburgh universities which you’ve all dutifully read and follow is much simpler and only two or three pages.
+
+My research is on the security policies surrounding mobile devices.
+Specifically how we link the security rules and privacy preferences to the implementations for actually enforcing them.
+
+A common and cheap way of enforcing the rule behind me might be to get the user to agree to follow it.
+Thats interesting; theres a delegation of trust from the company to the user, and its very clear who to blame if something goes wrong. 
+
+The state of the art is Mobile Device Management software.
+Software designed to run on an employees device and configure the device.
+
+An research implementation could recompile all the apps on a users phone to disable access to the camera if a user is near a GPS coordinate.
+MITM all their traffic so someone in IT can inspect what is being exfiltrated from their phone.
+Enterprise solutions can already do most of this.
+
+Thats interesting too, but how does this implementation tie back to the policy?
+The policy talks about delegations of trust to risk analysis groups to decide where in the company is restricted.
+It describes the top level security goal: 
+prevent malicious users from sending proprietary pictures, but how do we know that the implementation is going to meet the goal? 
+Is an agreement going to stop a malicious user?
+Is temporarily disabling the camera going to stop a bad guy taking pictures?
+
+Anyway thats what i’m currently working on.
+Exploring ways to model, check and understand BYOD security policies.
+ 
+
+
+
+
+** DONE Book zoo fright night with Di                                 :life:
+CLOSED: [2016-10-04 Tue 11:05] SCHEDULED: <2016-10-02 Sun>
+** DONE Fix bug that multiple types don't seem to all get expanded. :apppal:
+CLOSED: [2016-10-03 Mon 12:02]
+
+Bug was caused by variable's =hashcode= and =equals= not including types.
+This meant when expanding variables, the set of variables to expand didn't include variables with the same name, but unsatisfied types.
+
+Some changes with safety conditions required to get everything working again.
+
 * To-do
-** TODO Chase Raquel re: October Science Festival thing                :esf:
+** TODO Sort out the computers backing up again                   :sysadmin:
+** TODO Recover =private.dmg= from Mac backup                     :sysadmin:
+** DONE Chase Raquel re: October Science Festival thing                :esf:
+CLOSED: [2016-10-03 Mon 10:00]
+I think David did this for me.
 * Ideas
-
-* Done
+** TODO Blog about writing markdown/org/latex as one sentence per line :blog:
+Write tooling for it?

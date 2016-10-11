@@ -28,13 +28,30 @@ values."
       auto-completion-enable-snippets-in-popup t
       auto-completion-enable-help-tooltip t
       auto-completion-enable-sort-by-usage t)
+     (c-c++ :variables
+            c-c++-enable-clang-support t)
+     (clojure)
      (colors
       :variables
       colors-enable-rainbow-identifiers nil
-      colors-enable-nyan-cat-progress-bar t)
+      colors-enable-nyan-cat-progress-bar nil)
      deft
+     elm
      emacs-lisp
      git
+     (gnus :variables
+           gnus-secondary-select-methods '((nnimap "gmail"
+                                                   (nnimap-address "imap.gmail.com")
+                                                   (nnimap-server-port 993)
+                                                   (nnimap-stream ssl)))
+           message-send-mail-function 'smtpmail-send-it
+           smtpmail-default-smtp-server "smtp.gmail.com"
+           gnus-message-archive-method '(nnimap "imap.gmail.com")
+           gnus-message-archive-group "[Gmail]/Sent Mail"
+           nnml-directory "~/.mail/gnus/gmail"
+           message-directory "~/.mail/gnus/gmail")
+
+     haskell
      latex
      markdown
      (org
@@ -47,7 +64,7 @@ values."
      (version-control
       :variables
       version-control-global-margin t)
-     vim-powerline
+                                        ;vim-powerline
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -115,6 +132,7 @@ values."
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
    dotspacemacs-default-font '("PragmataPro"
+                               :size 18
                                :weight normal
                                :width normal
                                :powerline-scale 1.2)
@@ -143,7 +161,7 @@ values."
    ;; with `:' and Emacs commands are executed with `<leader> :'.
    dotspacemacs-command-key ":"
    ;; If non nil `Y' is remapped to `y$'. (default t)
-   dotspacemacs-remap-Y-to-y$ t
+   dotspacemacs-remap-Y-to-y$ nil
    ;; Name of the default layout (default "Default")
    dotspacemacs-default-layout-name "Default"
    ;; If non nil the default layout name is displayed in the mode-line.
@@ -164,10 +182,10 @@ values."
    ;; `find-contrib-file' (SPC f e c) are replaced. (default nil)
    dotspacemacs-use-ido nil
    ;; If non nil, `helm' will try to minimize the space it uses. (default nil)
-   dotspacemacs-helm-resize nil
+   dotspacemacs-helm-resize t
    ;; if non nil, the helm header is hidden when there is only one source.
    ;; (default nil)
-   dotspacemacs-helm-no-header nil
+   dotspacemacs-helm-no-header t
    ;; define the position to display `helm', options are `bottom', `top',
    ;; `left', or `right'. (default 'bottom)
    dotspacemacs-helm-position 'bottom
@@ -268,12 +286,197 @@ you should place your code here."
             org-agenda-skip-scheduled-if-deadline-is-shown t
             org-agenda-skip-deadline-prewarning-if-scheduled t
             org-agenda-files (let ((notes-dir +NOTES-DIRECTORY+))
-                               (file-expand-wildcards (concat notes-dir "*"))))))
+                               (file-expand-wildcards (concat notes-dir "*.org"))))))
 
   (progn ; deft settings
     (setq deft-extensions '("org", "md")
           deft-directory +NOTES-DIRECTORY+))
+
+  ;;   ;; PRETTIFY SYMBOLS (with Pragmata Pro)
+  ;;   (defun setup-pragmata-ligatures ()
+  ;;     (setq prettify-symbols-alist
+  ;;           (setq prettify-symbols-alist
+  ;;            '(("!!"   . ?)
+  ;;              ("!="   . ?)
+  ;;              ("!=="  . ?)
+  ;;              ("!≡"   . ?)
+  ;;              ("!≡≡"  . ?)
+  ;;              ("!>"   . ?)
+  ;;              ("#("   . ?)
+  ;;              ("#_"   . ?)
+  ;;              ("#{"   . ?)
+  ;;              ("#?"   . ?)
+  ;;              ("#>"   . ?)
+  ;;              ("%="   . ?)
+  ;;              ("%>"   . ?)
+  ;;              ("<~"   . ?)
+  ;;              ("&%"   . ?)
+  ;;              ("&&"   . ?)
+  ;;              ("&*"   . ?)
+  ;;              ("&+"   . ?)
+  ;;              ("&-"   . ?)
+  ;;              ("&/"   . ?)
+  ;;              ("&="   . ?)
+  ;;              ("&&&"  . ?)
+  ;;              ("&>"   . ?)
+  ;;              ("$>"   . ?)
+  ;;              ("~>"   . ?)
+  ;;              ("***"  . ?)
+  ;;              ("*="   . ?)
+  ;;              ("*/"   . ?)
+  ;;              ("*>"   . ?)
+  ;;              ("++"   . ?)
+  ;;              ("+++"  . ?)
+  ;;              ("+="   . ?)
+  ;;              ("+>"   . ?)
+  ;;              ("--"   . ?)
+  ;;              ("-<"   . ?)
+  ;;              ("-<<"  . ?)
+  ;;              ("-="   . ?)
+  ;;              ("->>"  . ?)
+  ;;              ("---"  . ?)
+  ;;              ("-->"  . ?)
+  ;;              (".."   . ?)
+  ;;              ("..."  . ?)
+  ;;              ("..<"  . ?)
+  ;;              (".>"   . ?)
+  ;;              (".~"   . ?)
+  ;;              (".="   . ?)
+  ;;              ("/*"   . ?)
+  ;;              ("//"   . ?)
+  ;;              ("/>"   . ?)
+  ;;              ("/="   . ?)
+  ;;              ("/=="  . ?)
+  ;;              ("///"  . ?)
+  ;;              ("/**"  . ?)
+  ;;              ("::"   . ?)
+  ;;              (":="   . ?)
+  ;;              (":≡"   . ?)
+  ;;              (":>"   . ?)
+  ;;              (":=>"  . ?)
+  ;;              ("<$>"  . ?)
+  ;;              ("<*"   . ?)
+  ;;              ("<*>"  . ?)
+  ;;              ("<+>"  . ?)
+  ;;              ("<-"   . ?)
+  ;;              ("<<"   . ?)
+  ;;              ("<<<"  . ?)
+  ;;              ("<<="  . ?)
+  ;;              ("<="   . ?)
+  ;;              ("<=>"  . ?)
+  ;;              ("<>"   . ?)
+  ;;              ("<|>"  . ?)
+  ;;              ("<<-"  . ?)
+  ;;              ("<|"   . ?)
+  ;;              ("<=<"  . ?)
+  ;;              ("<~~"  . ?)
+  ;;              ("<<~"  . ?)
+  ;;              ("<$"   . ?)
+  ;;              ("<+"   . ?)
+  ;;              ("<!>"  . ?)
+  ;;              ("<@>"  . ?)
+  ;;              ("<#>"  . ?)
+  ;;              ("<%>"  . ?)
+  ;;              ("<^>"  . ?)
+  ;;              ("<&>"  . ?)
+  ;;              ("<?>"  . ?)
+  ;;              ("<.>"  . ?)
+  ;;              ("</>"  . ?)
+  ;;              ("<\>"  . ?)
+  ;;              ("<\">" . ?)
+  ;;              ("<:>"  . ?)
+  ;;              ("<~>"  . ?)
+  ;;              ("<**>" . ?)
+  ;;              ("<<^"  . ?)
+  ;;              ("<!"   . ?)
+  ;;              ("<@"   . ?)
+  ;;              ("<#"   . ?)
+  ;;              ("<%"   . ?)
+  ;;              ("<^"   . ?)
+  ;;              ("<&"   . ?)
+  ;;              ("<?"   . ?)
+  ;;              ("<."   . ?)
+  ;;              ("</"   . ?)
+  ;;              ("<\\"  . ?)
+  ;;              ("<\""  . ?)
+  ;;              ("<:"   . ?)
+  ;;              ("<->"  . ?)
+  ;;              ("<!--" . ?)
+  ;;              ("<--"  . ?)
+  ;;              ("=<<"  . ?)
+  ;;              ("=="   . ?)
+  ;;              ("==="  . ?)
+  ;;              ("==>"  . ?)
+  ;;              ("=>"   . ?)
+  ;;              ("=~"   . ?)
+  ;;              ("=>>"  . ?)
+  ;;              ("≡≡"   . ?)
+  ;;              ("≡≡≡"  . ?)
+  ;;              ("≡:≡"  . ?)
+  ;;              (">-"   . ?)
+  ;;              (">="   . ?)
+  ;;              (">>"   . ?)
+  ;;              (">>-"  . ?)
+  ;;              (">>="  . ?)
+  ;;              (">>>"  . ?)
+  ;;              (">=>"  . ?)
+  ;;              (">>^"  . ?)
+  ;;              ("??"   . ?)
+  ;;              ("?~"   . ?)
+  ;;              ("?="   . ?)
+  ;;              ("?>"   . ?)
+  ;;              ("^="   . ?)
+  ;;              ("^."   . ?)
+  ;;              ("^?"   . ?)
+  ;;              ("^.."  . ?)
+  ;;              ("^<<"  . ?)
+  ;;              ("^>>"  . ?)
+  ;;              ("^>"   . ?)
+  ;;              ("\\\\" . ?)
+  ;;              ("\\>"  . ?)
+  ;;              ("@>"   . ?)
+  ;;              ("|="   . ?)
+  ;;              ("||"   . ?)
+  ;;              ("|>"   . ?)
+  ;;              ("|||"  . ?)
+  ;;              ("|+|"  . ?)
+  ;;              ("~="   . ?)
+  ;;              ("~~>"  . ?)
+  ;;              ("~>>"  . ?)
+  ;;              ))))
+  ;;
+  ;;   (defun refresh-pretty ()
+  ;;     (prettify-symbols-mode -1)
+  ;;     (prettify-symbols-mode +1))
+  ;;
+  ;;   ;; Hooks for modes in which to install the Pragmata ligatures
+  ;;   (mapc (lambda (hook)
+  ;;           (add-hook hook (lambda () (setup-pragmata-ligatures) (refresh-pretty))))
+  ;;         '(text-mode-hook
+  ;;           prog-mode-hook))
+  ;;   (global-prettify-symbols-mode +1)
+
+  ;;(setq line-spacing 2.5)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(org-agenda-files
+   (quote
+    ("~/Notes/ACE-proposal.org" "/Users/bogwonch/Notes/AppPAL/AppPAL.org" "/Users/bogwonch/Notes/AppPAL/convertpdftoimage.org" "~/Notes/Fringe.org" "~/Notes/Life.org" "~/Notes/Life.org_archive" "~/Notes/PhD.org" "/Users/bogwonch/Notes/Recipes/amaretto-sour.org" "/Users/bogwonch/Notes/Recipes/banana-bread.org" "/Users/bogwonch/Notes/Recipes/char-siu-bao.org" "/Users/bogwonch/Notes/Recipes/chichinga.org" "/Users/bogwonch/Notes/Recipes/courgette-breadcrumb-almond-pasta.org" "/Users/bogwonch/Notes/Recipes/jungle-bird.org" "/Users/bogwonch/Notes/Recipes/kingston-club.org" "/Users/bogwonch/Notes/Recipes/meen-moilee.org" "/Users/bogwonch/Notes/Recipes/pina-colada.org" "/Users/bogwonch/Notes/Recipes/rose-harissa-moroccan-lamb-and-flatbreads.org" "/Users/bogwonch/Notes/Recipes/talli-joes-holy-basil.org" "/Users/bogwonch/Notes/Recipes/tortino-di-verdure-incartato.org" "/Users/bogwonch/Notes/Recipes/trinidad-sour.org" "~/Notes/citrus.org" "~/Notes/mdm.org" "~/Notes/timesheet.org" "~/Notes/work.org")))
+ '(package-selected-packages
+   (quote
+    (auctex-latexmk zonokai-theme zenburn-theme zen-and-art-theme ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe use-package underwater-theme ujelly-theme twilight-theme twilight-bright-theme twilight-anti-bright-theme tronesque-theme toxi-theme toc-org tao-theme tangotango-theme tango-plus-theme tango-2-theme sunny-day-theme sublime-themes subatomic256-theme subatomic-theme stekene-theme spacemacs-theme spaceline spacegray-theme soothe-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme smooth-scrolling smeargle shm seti-theme reverse-theme reveal-in-osx-finder restart-emacs rainbow-mode rainbow-identifiers rainbow-delimiters railscasts-theme quelpa purple-haze-theme professional-theme popwin planet-theme phoenix-dark-pink-theme phoenix-dark-mono-theme persp-mode pcre2el pbcopy pastels-on-dark-theme paradox page-break-lines osx-trash orgit organic-green-theme org-repo-todo org-present org-pomodoro org-plus-contrib org-bullets open-junk-file omtose-phellack-theme oldlace-theme occidental-theme obsidian-theme noctilux-theme niflheim-theme neotree naquadah-theme mustang-theme move-text monokai-theme monochrome-theme molokai-theme moe-theme mmm-mode minimal-theme material-theme markdown-toc majapahit-theme magit-gitflow macrostep lush-theme lorem-ipsum linum-relative light-soap-theme leuven-theme launchctl jbeans-theme jazz-theme ir-black-theme inkpot-theme info+ indent-guide ido-vertical-mode hungry-delete htmlize hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation heroku-theme hemisu-theme help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-gitignore helm-flyspell helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag hc-zenburn-theme haskell-snippets gruvbox-theme gruber-darker-theme grandshell-theme gotham-theme google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-gutter-fringe git-gutter-fringe+ gh-md gandalf-theme flycheck-pos-tip flycheck-haskell flycheck-elm flx-ido flatui-theme flatland-theme firebelly-theme fill-column-indicator farmhouse-theme fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-args evil-anzu espresso-theme elm-mode elisp-slime-nav dracula-theme django-theme disaster diff-hl deft define-word darktooth-theme darkmine-theme darkburn-theme dakrone-theme cyberpunk-theme company-statistics company-quickhelp company-ghc company-cabal company-c-headers company-auctex colorsarenice-theme color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized cmm-mode cmake-mode clues-theme clj-refactor clean-aindent-mode clang-format cider-eval-sexp-fu cherry-blossom-theme busybee-theme buffer-move bubbleberry-theme bracketed-paste birds-of-paradise-plus-theme badwolf-theme auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes aggressive-indent afternoon-theme adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:background nil))))
+ '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
+ '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))

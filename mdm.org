@@ -1,4 +1,9 @@
+* MDM demos
+  - [[https://www.ibm.com/marketplace/cloud/mobile-device-management/uk/en-uk][IBM Maas 360]]
+  - [[https://www.mobileiron.com/en/webform/30-day-trial][MobileIron]]
+  - [[http://www.air-watch.com/lp/free-trial/][VMware AirWatch]]
 
+* MDM Vendors
 - [[http://enterpriseios.com/wiki/Comparison_MDM_Providers][Comparison of MDM Providers]]
   - A good source of information about different MDM software.
   - Seems a little dated but a good first start
@@ -8,7 +13,7 @@
     - Everyone is either a /Leader/, /Visionary/ or /Niche Player/.
     - Some interesting material that explains basic terms, but a *lot* of gobbledygook.
 
-* Mobile Device Management for Office 365
+** Mobile Device Management for Office 365
 
 [[https://support.office.com/en-us/article/Capabilities-of-built-in-Mobile-Device-Management-for-Office-365-a1da44e5-7475-4992-be91-9ccec25905b0?ui=en-US&rs=en-US&ad=US][Source]]
 
@@ -22,14 +27,14 @@
 
 - Remote wipe capability
 
-* Microsoft Intune
+** Microsoft Intune
 
 [[https://www.microsoft.com/en-us/cloud-platform/microsoft-intune][Source]]
 
 A more advanced version of [[Mobile Device Management for Office 365]] which provides /Mobile Application Management/.
 Designed to run in Microsoft's apps, and avoid users having to install provisioning profiles (which they dislike).o
 
-** Policy CSP
+*** Policy CSP
 
 [[https://msdn.microsoft.com/library/windows/hardware/dn904962(v=vs.85).aspx][Source]]
 
@@ -37,7 +42,7 @@ Designed to run in Microsoft's apps, and avoid users having to install provision
 - But still essentially a box-ticking system
   - Fields can have values but no real delegation or declarative policies for who can update them.
 
-* MobileIron
+** MobileIron
 
 - Have a [[https://www.mobileiron.com/en/video/visual-privacy][Visual Privacy]] feature to alert user's what the MDM software can or cannot do.
   - Very similar to Android's old permission notifications
@@ -56,7 +61,7 @@ Designed to run in Microsoft's apps, and avoid users having to install provision
   - They don't say it explicitly, but it seems this is all tick-box stuff again.
 
       
-* Amtel NetPlus>>>Mobility
+** Amtel NetPlus>>>Mobility
 
 - Got a certificate error on accessing their website.
 - Looks dead 
@@ -76,7 +81,7 @@ Designed to run in Microsoft's apps, and avoid users having to install provision
 - Enterprise app store
   - Apps with access control policies
   - Black/White lists of public apps
-* Citrix XenMobile
+** Citrix XenMobile
 
 [[https://www.citrix.com/products/xenmobile/compare.html][Source]]
 
@@ -90,7 +95,7 @@ Can't really see what it does, but it looks like a provisioning tool.
   - App wrapping then?
  
 
-* IBM MaaS360
+** IBM MaaS360
 
 - They *really* want you to be able to chat directly with them.
   - Fine let's chat with Keith!
@@ -117,7 +122,7 @@ Can't really see what it does, but it looks like a provisioning tool.
 
 - Keith confirms, not capable of declarative policies.
  
-* VMware AirWatch
+** VMware AirWatch
 
 [[http://www.air-watch.com/solutions/bring-your-own-device-byod/][Source]]
 

@@ -6,15 +6,18 @@
   - SANS
   - NHS Torbay
 
-**** TODO Which attributes described in SecPAL paper are needed to express BYOD policies?
-**** TODO David to chase /Mobile Iron/.
+**** DONE Which attributes described in SecPAL paper are needed to express BYOD policies?
+     CLOSED: [2017-01-30 Mon 11:55]
+**** DONE David to chase /Mobile Iron/.
+     CLOSED: [2017-01-30 Mon 11:55]
 
 *** Property checking
 
 - Stop calling it Lint.
 - Completeness is to be renamed /satisfiability/ or /derivability/.
 
-**** TODO Survey XACML methods for property checking
+**** DONE Survey XACML methods for property checking
+     CLOSED: [2017-01-30 Mon 11:55]
 
 ** Knowledge Distribution
 
@@ -24,7 +27,8 @@ What happens when you compose policies from different places which conflict?
 
 
 
-*** TODO what policies are there that really need to be distributed?
+*** DONE what policies are there that really need to be distributed?
+    CLOSED: [2017-01-30 Mon 11:55]
 
 *** What happens when time becomes a part of a policy?
 
@@ -33,10 +37,12 @@ What happens when you compose policies from different places which conflict?
    - Quantified with respect to belief in any given statement.
    - How do you handle independence
   
-*** TODO lit survey
+*** DONE lit survey
+    CLOSED: [2017-01-30 Mon 11:55]
 
 ** Tasks
-*** TODO Find an expert to ask about policies
+*** DONE Find an expert to ask about policies
+    CLOSED: [2017-01-30 Mon 11:55]
     - /Naranka Dulay/ at Imperial?
     - Michael Ravatsos at Edinburgh?
 *** DONE [7/7] Read Papers added to Zotero

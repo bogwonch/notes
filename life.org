@@ -1,0 +1,12 @@
+* Housework                                                       :housework:
+** TODO Fix front door keyhole
+** TODO Repaint front door
+** TODO Repaint house
+** TODO Fix light switch in bathroom
+** DONE Replace lightbulbs in living room and office
+   CLOSED: [2017-01-30 Mon 22:06] DEADLINE: <2017-01-30 Mon>
+* Meet ups
+* Oddjobs
+** TODO Find watch battery guarantee
+*** TODO replace watch battery
+** TODO chase Di’s popup book

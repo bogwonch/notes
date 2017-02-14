@@ -1,0 +1,169 @@
+* Thesis
+
+** TODO Chapter 5
+*** TODO Write literature review
+    SCHEDULED: <2017-02-01 Wed> DEADLINE: <2017-02-28 Tue>
+
+** TODO Chapter 3
+   :PROPERTIES:
+   :ORDERED:  t
+   :END:
+
+*** TODO Revise chapter 3 based on DA feedback
+**** DONE Email David chapter 3 Draft
+     CLOSED: [2017-02-05 Sun 14:01] DEADLINE: <2017-02-01 Wed>
+***** DONE Read and edit chapter 3
+      CLOSED: [2017-02-01 Wed 00:04]
+
+* Publications
+** IMPS 2017
+*** TODO Book tickets and accomodation for IMPS
+    DEADLINE: <2017-02-14 Tue>
+    David said I can book for the whole conference!
+    WOOP WOOP!
+
+*** Reviewers comments
+**** Reviewer 1
+     This paper provides an evalation of five different BYOD policies. The
+     evaluation is performed on an encoding of the policies in to SecPAL,
+     the translation of which was done by the authors. The key contribution
+     of the paper is to report statistics on different types of predicates
+     that are contained within the policies. The take away is that the
+     policies cover a diverse set of concerns and approaches for addressing
+     those concerns.
+
+     BYOD is a continual security concern for IT administrators, and it is
+     valuable to understand how those security concerns are addressed in
+     practice. The paper provides a valuable investigation of different BYOD
+     policies that might be adopted by hospitals and enterprises.
+
+     My main concern with the paper is that it is not clear how the authors
+     resolved ambiguity in the BYOD policies when translating into SecPAL.
+     The absence of ambiguity is the motivation for using SecPAL, but the
+     only statement the authors make is in the conclusion: "The translation
+     from natural to formal language is somewhat subjective. We have tried to
+     mitigate this by attempting to preserve the style of the original and by
+     careful use of predicates between different policies." Did the authors
+     work together. What happened when ambiguity was encountered. Did you try
+     to contact the writers of the policies? Can you give some examples of
+     where ambiguity occurred?
+
+     Section III discusses policies for "company-owned phones". This means
+     the phone is not a BYOD device. The paper needs to be more clear about
+     the implications of this, and potentially remove these rules from the
+     evaluated dataset.
+
+     The paper could do a much better job at distilling the main lessons and
+     take-aways.
+
+**** Reviewer 2
+     Summary:
+
+     Authors look at five BYOD policies: two hypothetical policies provided as
+     guidelines, one from a hospital, one from a company, and one from a university.
+     These policies are translated into a formal language and then analyzed and
+     compared.
+
+     Comments:
+
+     * I was not able to find [6] which is by the same authors. It appears that
+       that paper addressed the issue of lifting the formal language from the
+       policies and this short paper begins to compare different BYOD policies.
+     * The comparison of BYOD policies to MDM tool capabilities is interesting --
+       the language of BYOD policies exceeds what MDM tools can currently
+       implement. Adding acknowledgements to mobile devices seems difficult, do the
+       authors have any sense whether these acknowledgements are required on every
+       action or just once?
+     * The difficulty in translating BYOD policies to SecPAL is briefly mentioned
+       in the conclusion. It would be useful to ellaborate on how much of this was
+       done manually when the tools failed.
+
+     Minor Comments:
+
+     * "Some of these concerns (the use of acknowledgements in particular) are not
+       addressed by current BYOD tools." -- Should be "MDM".
+
+**** Reviewer 3
+     Summary:
+
+     Authors look at five BYOD policies: two hypothetical policies provided as
+     guidelines, one from a hospital, one from a company, and one from a university.
+     These policies are translated into a formal language and then analyzed and
+     compared.
+
+     Comments:
+
+     * I was not able to find [6] which is by the same authors. It appears that
+       that paper addressed the issue of lifting the formal language from the
+       policies and this short paper begins to compare different BYOD policies.
+     * The comparison of BYOD policies to MDM tool capabilities is interesting --
+       the language of BYOD policies exceeds what MDM tools can currently
+       implement. Adding acknowledgements to mobile devices seems difficult, do the
+       authors have any sense whether these acknowledgements are required on every
+       action or just once?
+     * The difficulty in translating BYOD policies to SecPAL is briefly mentioned
+       in the conclusion. It would be useful to ellaborate on how much of this was
+       done manually when the tools failed.
+
+     Minor Comments:
+
+     * "Some of these concerns (the use of acknowledgements in particular) are not
+       addressed by current BYOD tools." -- Should be "MDM".
+
+*** TODO Write talk for IMPS
+    DEADLINE: <2017-03-03 Fri>
+*** DONE Submit final version
+    CLOSED: [2017-02-05 Sun 14:33]
+
+    DEADLINE: <2017-02-06 Mon> SCHEDULED: <2017-02-03 Fri>
+****** DONE Incorporate IMPS reviewers feedback
+       CLOSED: [2017-02-05 Sun 14:09]
+****** DONE Sort out mess with company owned phones
+       CLOSED: [2017-02-05 Sun 14:09]
+****** DONE [Current BYOD tools ~> Current MDM tools]
+       CLOSED: [2017-02-01 Wed 17:40]
+****** DONE Fix iFM paper reference
+       CLOSED: [2017-02-01 Wed 17:18]
+       Currently its not publicly available.
+       Added reference to Github version.
+* Third Year Review
+** <2017-02-13 9:30 Mon> Third year review with David, Myrto and Bjorn
+
+   - “It’s too late to fire you so I guess you’d better get a PhD.” — David Aspinall
+
+   - Need to get an overarching narative for thesis.  Story with BYOD is good but I need to do a much better job of selling it/myself.
+   - Chapter a month for review seems reasonable; David slightly worried its slipping but Myrto and Bjorn seemed confident.
+   - I have enough work.
+   - David thinks I should probably be elligible for some extension even if Bob Fisher (admin who sent snotty email).
+     - Have emphasised that I want to finish on time, because baby and work requirements.
+     - But perhaps some extra funding?
+   - I need to stop underselling myself.
+     - My work is good and interesting.
+   - Add section to MDM chapter about how I would integrate AppPAL with an MDM package to implement a policy.
+   - Talk to MDM author…
+     - Maybe just Kami?
+
+
+
+** DONE Write talk for third year review
+   CLOSED: [2017-02-13 Mon 10:39] SCHEDULED: <2017-02-06 Mon> DEADLINE: <2017-02-10 Fri>
+
+*  Odd Jobs
+
+** TODO [#C] Convert the Secure Programming Lab 3 server to a Dockerfile for David
+   SCHEDULED: <2017-02-05 Sun>
+
+** <2017-02-13 Mon> Help Dimple with her certificate pinning
+   She cancelled again.
+
+*** [[https://nelenkov.blogspot.co.uk/2012/12/certificate-pinning-in-android-42.html][Nikolay Elenkov's Android Explorations article on certificate pinning]]
+    Has links to Moxie’s code, and skeleton implementation.
+
+*** [[https://developer.android.com/training/articles/security-ssl.html][Google Developer documentation]]
+    Seems to indicate that you can do it by implementing your own TrustManager
+
+**** [[https://developer.android.com/reference/javax/net/ssl/X509TrustManager.html][X509TustManager documentation]]
+**** [[https://developer.android.com/reference/javax/net/ssl/X509ExtendedTrustManager.html][X509ExtendedTrustManager documentation]]
+*** [[https://github.com/ikust/hello-pinnedcerts/blob/master/pinnedcerts/src/main/java/co/infinum/https/CustomTrustManager.java][ikust/hello-pinnedcerts]]
+    Looks like an implementation of this
+*** [[https://github.com/moxie0/AndroidPinning/blob/master/src/org/thoughtcrime/ssl/pinning/PinningTrustManager.java][Moxie Marlinspike's Implementation of this]].
